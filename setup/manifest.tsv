@@ -1,0 +1,45 @@
+# Managed surface of the live setup ("setup as code").
+# Format: kind<TAB>home_rel<TAB>flags
+#   repo path        = setup/home/<home_rel>
+#   live path        = <SETUP_ROOT>/<home_rel>   (SETUP_ROOT defaults to $HOME)
+# kinds:
+#   file        single file, repo content wins on apply
+#   dir         managed directory; default apply adds/updates repo files and keeps
+#               live extras (flagged as drift); `setup-apply.sh --prune` removes extras
+#   json-state  JSON document whose records mix config and runtime fields;
+#               drift compares config fields only, apply merges repo config with
+#               live runtime fields (volatile=<set>); only `cron` set is defined
+# flags: volatile=cron | systemctl-reload (unit changed -> daemon-reload hint)
+# Excluded by design: secrets (.env, auth.json), runtime state (state.db, sessions,
+# memories, logs, .artifacts, work/), generated files (SOUL.profile.md, skins),
+# plugin install trees, skills (H curates them itself), non-hermes systemd units,
+# .claude.json (session state), omh/ plugin dir (managed by hermes-omh-update).
+file	.hermes/config.yaml
+json-state	.hermes/cron/jobs.json	volatile=cron
+file	.hermes/profiles/sqecea/config.yaml
+file	.hermes/profiles/yqecea/config.yaml
+file	.hermes/profiles/jqecea/config.yaml
+json-state	.hermes/profiles/sqecea/cron/jobs.json	volatile=cron
+json-state	.hermes/profiles/yqecea/cron/jobs.json	volatile=cron
+json-state	.hermes/profiles/jqecea/cron/jobs.json	volatile=cron
+dir	.hermes/scripts
+dir	.agents/bin
+dir	.agents/lib
+file	.codex/config.toml
+file	.codex/AGENTS.md
+file	.claude/CLAUDE.md
+file	.claude/settings.json
+file	.config/t3-pstack/models.md
+file	.config/systemd/user/hermes-gateway.service	systemctl-reload
+dir	.config/systemd/user/hermes-gateway.service.d	systemctl-reload
+file	.config/systemd/user/hermes-chrome-cdp-relay.service	systemctl-reload
+file	.config/systemd/user/hermes-inhibit-sleep.service	systemctl-reload
+file	.config/systemd/user/hermes-integration-health.service	systemctl-reload
+file	.config/systemd/user/hermes-integration-health.timer	systemctl-reload
+file	.config/systemd/user/hermes-omh-update.service	systemctl-reload
+file	.config/systemd/user/hermes-omh-update.timer	systemctl-reload
+file	.config/systemd/user/hermes-owner-reflection.service	systemctl-reload
+file	.config/systemd/user/hermes-owner-reflection.timer	systemctl-reload
+file	.config/systemd/user/hermes-whatsapp-reader.service	systemctl-reload
+file	.config/systemd/user/hermes-workers.slice	systemctl-reload
+dir	.config/systemd/user/hermes-worker-.scope.d	systemctl-reload

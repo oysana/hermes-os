@@ -59,6 +59,7 @@ map and `docs/` per layer. What follows is the working map for an agent.
 - Token spend is reported weighted (input×1 + cache_write×1.25 + cache_read×0.1 + output×5) alongside raw.
 - No Claude model in a pstack role. Claude runs only as a coordinator session Yusuf opens himself.
 - No "owner approved X" in a ledger unless the owner literally said X, quoted on the same line.
+- The live setup changes only through this repo: edit `setup/home/**`, then `scripts/setup-apply.sh` (flock + backup + verify + rollback). Updates and gateway restarts go through `scripts/setup-lock.sh` / `setup-gateway-restart.sh`. Enforcement is `setup-sync.py drift` — not prose. Design: [docs/setup-as-code.md](docs/setup-as-code.md).
 
 ### Rule → enforcer
 

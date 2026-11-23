@@ -64,6 +64,8 @@ LANES = {
     "t3-harnesses": ("check-t3-harnesses", "tests/harness-native", "runtime/harness-config", "harness-usage",
                      "check-rollback-links", "compaction-floor", "t3-pstack/models.md", "ROLLBACK.md"),
     "outer-inner": ("tests/outer-inner", "t3-mcp-call", "t3_mcp_client", "route-policy"),
+    "setup-as-code": ("setup/", "setup-sync", "setup-apply", "setup-pull", "setup-lock",
+                      "setup-gateway-restart", "setup-as-code"),
     "custom-ratchet": ("custom-ratchet", "/.hermes/plugins/", "/.hermes/scripts/", ".agents/lib/"),
 }
 # Lanes that check every file of a kind; hitting only these does not mean a path is understood.

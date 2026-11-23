@@ -46,7 +46,8 @@ data and stays private).
    [task routing](docs/routing.md), [models and T3 seats](docs/models.md),
    [memory](docs/memory.md), [schedules](docs/schedules.md),
    [boundaries and security](docs/boundaries.md),
-   [adding a project](docs/projects.md).
+   [adding a project](docs/projects.md),
+   [setup as code](docs/setup-as-code.md).
 3. **[AGENTS.md](AGENTS.md)** — the map for agents working inside this
    setup: where things live, which commands, what is forbidden.
 
@@ -55,6 +56,7 @@ data and stays private).
 | Path | Role |
 |---|---|
 | `scripts/` | The check suite entry (`check.sh`) plus the few scripts the live setup calls (`morning-diff-report.py`, `verify-quota-outcome.py`, `setup-map.py`) |
+| `setup/` | Source of truth for the live setup: `manifest.tsv` + `home/` mirror. Changes reach live only via `scripts/setup-apply.sh` (lock + backup + verify + rollback); drift is caught by `setup-sync.py drift` |
 | `tests/` | Lanes invoked by `scripts/check.sh` — contract tests against the live configuration |
 | `runtime/` | Manifests and fixtures the tests pin (installed-file manifests, repair records) |
 | `verification/` | Bend 2 law proofs for critical invariants |

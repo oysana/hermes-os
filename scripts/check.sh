@@ -53,6 +53,8 @@ step t3-harnesses "$root" bash scripts/check-t3-harnesses.sh
 
 step outer-inner "$root" "$testenv_py" -B -m pytest tests/outer-inner -q
 
+step setup-as-code "$root" bash tests/setup-as-code/run.sh
+
 printf '\ntotal %ss\n' "$SECONDS"
 if ((${#failed[@]})); then
   printf '\nFAILED: %s\n' "${failed[*]}"
