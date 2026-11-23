@@ -1,6 +1,6 @@
 # SETUP-MAP — что реально настроено
 
-сгенерировано 23.11.2026 08:01 скриптом `scripts/setup-map.py`
+сгенерировано 23.11.2026 09:01 скриптом `scripts/setup-map.py`
 из живых конфигов `~/.hermes` и `~/.config/t3-pstack/models.md`. Не редактировать вручную.
 
 ## Профили
@@ -8,7 +8,7 @@
 - роль: работа и T3: координирует делегирование, проекты, приёмку
 - модель: gpt-6.1-terra (openai-codex); фолбэки: gpt-6.1-terra (openai-codex), gpt-6-luna (openai-codex)
 - плагины (16): advanced-delegation, ariadne, bitwarden-session-bridge, claude-subscription-directsdk-experimental, gemini-skill-picker, h-router-budget, hermes-lcm-x, hermes-lcm-x-local-embeddings, inbox, omh, omh-gemini-decisions, seedguard, t3-route, telegram-owner-reactions, telegram-task-reactions, tokenjuice
-- cron: 11 включено из 39
+- cron: 8 включено из 38
 - память MEMORY.md: 67.3 КБ
 - автозагрузка навыков: нет
 
@@ -67,17 +67,14 @@
 - session hook: on
 
 ## Включённые cron-задачи
-- [H] Ежедневный обзор OyVoice — every day at 9am
 - [H] Диск: сторож + самолечение — 0 9,15,21 * * *
-- [H] Провайдеры: отказ по оплате/лимиту — */10 * * * *
+- [H] Провайдеры: отказ по оплате/лимиту — */30 * * * *
 - [H] Codex: остаток лимита — every 60m
 - [H] Лимиты подписок: сторож темпа — every 60m
 - [H] t3-stuck-watch — */30 * * * *
 - [H] t3-tick FSM poll — every 5 min
 - [H] daily quota-outcome audit — every day 07:00
 - [H] kanban-watch — 0 */4 * * *
-- [H] morning-report-231123 — once at 2026-11-23 08:30
-- [H] OyVoice: автономный бэклог — двигатель — every 60m
 - [Y] 22 включённых личных задачи (имена скрыты в публичной версии)
 - [S] 8 включённых личных задачи (имена скрыты в публичной версии)
 - [J] 2 включённых личных задачи (имена скрыты в публичной версии)

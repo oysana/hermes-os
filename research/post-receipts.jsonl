@@ -1,133 +1,134 @@
-{"id": "2063186118409929161", "author": "nurijanian", "received_at": 1794317018.584061, "state": "legacy"}
-{"id": "2069824386283319343", "author": "poteto", "received_at": 1792654808.871254, "state": "legacy"}
-{"id": "2092198860500201545", "author": "nurijanian", "received_at": 1793239039.0, "state": "legacy"}
-{"id": "2094457600259842065", "author": "poteto", "received_at": 1794678108.8691204, "state": "legacy"}
-{"id": "2097732320606507506", "author": "poteto", "received_at": 1794678108.8691204, "state": "legacy"}
-{"id": "2101309986156712025", "author": "akshay_pachaar", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2101454284927959080", "author": "LangChain", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2101672304358948992", "author": "rasbt", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2102059089652285739", "author": "socialwithaayan", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2102370303905071479", "author": "ZoharEiny", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2102430863732732194", "author": "ScaleWthAI", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2103571281014861957", "author": "poteto", "received_at": 1794678108.8691204, "state": "legacy"}
-{"id": "2104214116999278874", "author": "akshay_pachaar", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2104783226833186920", "author": "Mr_Buzzoni", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2106453816757354947", "author": "sermakarevich", "received_at": 1793943966.0, "state": "legacy"}
-{"id": "2107895957933408429", "author": "ClaudeDevs", "received_at": 1791466413.2176168, "state": "legacy"}
-{"id": "2109554523316646147", "author": "LukeParkerDev", "received_at": 1791796947.0, "state": "legacy"}
-{"id": "2112276257618743598", "author": "shengkunye", "received_at": 1792672727.0, "state": "legacy"}
-{"id": "2112287872615387215", "author": "vasuman", "received_at": 1792496293.0, "state": "legacy"}
-{"id": "2112876555907064008", "author": "yifanxu_ephai", "received_at": 1792655860.537944, "state": "legacy"}
-{"id": "2112902388302467493", "author": "JoshARosen", "received_at": 1792599419.0, "state": "legacy"}
-{"id": "2112936525457740139", "author": "GitHubNext", "received_at": 1792672727.0, "state": "legacy"}
-{"id": "2112946991898525779", "author": "imbabybrooklyn", "received_at": 1792652765.0, "state": "legacy"}
-{"id": "2113130441058455651", "author": "rlaope", "received_at": 1792656138.6206143, "state": "legacy"}
-{"id": "2115253465693737317", "author": "tvytlx", "received_at": 1793260687.4862711, "state": "legacy"}
-{"id": "2115477935482118345", "author": "ndrezn", "received_at": 1793240499.0, "state": "legacy"}
-{"id": "2115614748742218045", "author": "mdp_sec", "received_at": 1795141750.7492194, "state": "legacy"}
-{"id": "2116237813582582072", "author": "o_kwasniewski", "received_at": 1793535016.0, "state": "legacy"}
-{"id": "2116533552288563205", "author": "huangruiteng", "received_at": 1793541301.0, "state": "legacy"}
-{"id": "2116547247018229999", "author": "omarsar0", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2116857257245987236", "author": "DeepSeekHarness", "received_at": 1793541301.0, "state": "legacy"}
-{"id": "2117956378065088750", "author": "annabellschfr", "received_at": 1793943831.0721142, "state": "legacy"}
-{"id": "2117980022250316282", "author": "ladyxtel", "received_at": 1793869029.0, "state": "legacy"}
-{"id": "2118315489831117028", "author": "HermesAgentTips", "received_at": 1795160275.0, "state": "legacy"}
-{"id": "2118327478250840140", "author": "0xwhrrari", "received_at": 1793943997.259455, "state": "legacy"}
-{"id": "2118351912689181174", "author": "AISuperDomain", "received_at": 1793972120.0, "state": "legacy"}
-{"id": "2118411592627052937", "author": "BHolmesDev", "received_at": 1793941713.0, "state": "legacy"}
-{"id": "2118434380435657033", "author": "adibvafa", "received_at": 1793940792.0, "state": "legacy"}
-{"id": "2118434475973726697", "author": "sydneyrunkle", "received_at": 1793940904.0, "state": "legacy"}
-{"id": "2118625742296678466", "author": "robertpenner", "received_at": 1793962231.0, "state": "legacy"}
-{"id": "2118678768730403042", "author": "HermesAgentTips", "received_at": 1793970981.0, "state": "legacy"}
-{"id": "2119332146485891501", "author": "addyosmani", "received_at": 1794136174.0, "state": "legacy"}
-{"id": "2119342124143448127", "author": "accekid", "received_at": 1794662140.708569, "state": "legacy"}
-{"id": "2119407942696878411", "author": "sermakarevich", "received_at": 1794147726.70563, "state": "legacy"}
-{"id": "2119429272599474240", "author": "Ronny_MiniMax", "received_at": 1794148272.0, "state": "legacy"}
-{"id": "2119475019093073943", "author": "code_barbarian", "received_at": 1794224817.0, "state": "legacy"}
-{"id": "2119730968437432423", "author": "Mr_Buzzoni", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2119739525752918340", "author": "witcheer", "received_at": 1794289552.0, "state": "legacy"}
-{"id": "2119744423101645301", "author": "ai_database", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2119806541821776215", "author": "beamnxw", "received_at": 1794282796.0, "state": "legacy"}
-{"id": "2119808229236699466", "author": "LimestoneHQ", "received_at": 1794282866.0, "state": "legacy"}
-{"id": "2119829427010044261", "author": "CrazyShyyt", "received_at": 1794313258.741602, "state": "legacy"}
-{"id": "2119837532502315503", "author": "LangChain", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2119851595836092686", "author": "davekiss", "received_at": 1794282558.0, "state": "legacy"}
-{"id": "2119901794377531572", "author": "brivael", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2119950162772582491", "author": "heydengai", "received_at": 1794316966.0729675, "state": "legacy"}
-{"id": "2119971224113803483", "author": "xiaomovps", "received_at": 1794313258.741602, "state": "legacy"}
-{"id": "2120018866126623163", "author": "mylifcc", "received_at": 1794316899.085806, "state": "legacy"}
-{"id": "2120022348925640771", "author": "MahyadGhassemi", "received_at": 1794297011.0, "state": "legacy"}
-{"id": "2120041783568875653", "author": "TiagerBao", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2120047621549306158", "author": "minheo93698092", "received_at": 1794401159.0, "state": "legacy"}
-{"id": "2120077716460572735", "author": "ai_database", "received_at": 1794308168.5005116, "state": "legacy"}
-{"id": "2120128085383360746", "author": "cu30rry_", "received_at": 1794313204.0242412, "state": "legacy"}
-{"id": "2120131864904286636", "author": "ai_database", "received_at": 1794316866.6856735, "state": "legacy"}
-{"id": "2120205576831734008", "author": "hey_strengerss", "received_at": 1794662140.708569, "state": "legacy"}
-{"id": "2120219078778609721", "author": "0x_rody", "received_at": 1794363936.265301, "state": "legacy"}
-{"id": "2120221790689730769", "author": "boristane", "received_at": 1794391105.0, "state": "legacy"}
-{"id": "2120476128909435008", "author": "cu30rry_", "received_at": 1794401159.0, "state": "legacy"}
-{"id": "2120497986912530488", "author": "rlaope", "received_at": 1794401860.0, "state": "legacy"}
-{"id": "2120838662254420341", "author": "mattpocockuk", "received_at": 1794484848.0, "state": "legacy"}
-{"id": "2121635683999883577", "author": "hwchase17", "received_at": 1794679288.777266, "state": "legacy"}
-{"id": "2121970248001990759", "author": "denohawari", "received_at": 1794918195.0, "state": "legacy"}
-{"id": "2121972802811031985", "author": "HermesAgentTips", "received_at": 1794794981.0, "state": "legacy"}
-{"id": "2122257368213819702", "author": "pontusab", "received_at": 1794907040.480432, "state": "legacy"}
-{"id": "2122336732079161572", "author": "borjafat", "received_at": 1794902835.09453, "state": "legacy"}
-{"id": "2122362571630194882", "author": "oprydai", "received_at": 1794922431.0, "state": "legacy"}
-{"id": "2122391663889039828", "author": "hwchase17", "received_at": 1794922577.9488297, "state": "legacy"}
-{"id": "2122581247553843259", "author": "ai_database", "received_at": 1794902781.140616, "state": "legacy"}
-{"id": "2122590683055993308", "author": "addyosmani", "received_at": 1794902978.821293, "state": "legacy"}
-{"id": "2122631856885846094", "author": "Arindam_1729", "received_at": 1794936929.347862, "state": "legacy"}
-{"id": "2122661806241992758", "author": "IBuzovskyi", "received_at": 1795028335.0, "state": "legacy"}
-{"id": "2122681113579782150", "author": "dchernyshuk", "received_at": 1794924305.350348, "state": "legacy"}
-{"id": "2122703815992602992", "author": "dair_ai", "received_at": 1794933012.308476, "state": "legacy"}
-{"id": "2122734341516345836", "author": "sydneyrunkle", "received_at": 1794936872.46356, "state": "legacy"}
-{"id": "2122741561595162780", "author": "0xMfox", "received_at": 1794995021.0, "state": "legacy"}
-{"id": "2123005797332386071", "author": "ai_database", "received_at": 1795001375.505121, "state": "legacy"}
-{"id": "2123031990622437426", "author": "distortgeekin", "received_at": 1795013139.263067, "state": "legacy"}
-{"id": "2123088045155242111", "author": "willdjthrill", "received_at": 1795099917.0, "state": "legacy"}
-{"id": "2123143524530913734", "author": "JamesC_Alpha", "received_at": 1795189849.7323773, "state": "legacy"}
-{"id": "2123143588670263599", "author": "JamesC_Alpha", "received_at": 1795088752.8210998, "state": "legacy"}
-{"id": "2123156502559264849", "author": "CFDevelop", "received_at": 1795100049.2264528, "state": "legacy"}
-{"id": "2123159537016533493", "author": "poteto", "received_at": 1795052158.0, "state": "legacy"}
-{"id": "2123298389551161411", "author": "mdp_sec", "received_at": 1795141676.6144862, "state": "legacy"}
-{"id": "2123402215272722806", "author": "sermakarevich", "received_at": 1795102202.0, "state": "legacy"}
-{"id": "2123434745728045425", "author": "annabellschfr", "received_at": 1795114467.0077763, "state": "legacy"}
-{"id": "2123439559669162160", "author": "maxxmalist", "received_at": 1795161824.0, "state": "legacy"}
-{"id": "2123495357036605797", "author": "BHolmesDev", "received_at": 1795138301.0, "state": "legacy"}
-{"id": "2123656067145990575", "author": "jaydwivedi_", "received_at": 1795155551.14249, "state": "legacy"}
-{"id": "2123740644736958772", "author": "charureadss", "received_at": 1795248133.0, "state": "legacy"}
-{"id": "2123855918626451593", "author": "maestrooth", "received_at": 1795287174.0, "state": "legacy"}
-{"id": "2123861436380131398", "author": "Da7_Tech", "received_at": 1795232745.0, "state": "legacy"}
-{"id": "2123882430620733742", "author": "NousResearch", "received_at": 1795228045.0, "state": "legacy"}
-{"id": "2124039417153347708", "author": "Teknium", "received_at": 1795245657.0, "state": "legacy"}
-{"id": "2124105677748527453", "author": "0xTrackmind", "received_at": 1795287174.0, "state": "legacy"}
-{"id": "2124138527189331995", "author": "0xwhrrari", "received_at": 1795287174.0, "state": "legacy"}
-{"id": "2124260948256907704", "author": "0xCodez", "received_at": 1795364240.745116, "state": "queued"}
-{"id": "2124294531214385183", "author": "dabit3", "received_at": 1795358473.897717, "state": "queued"}
-{"id": "2124406133427167445", "author": "nurijanian", "received_at": 1795356444.0, "state": "queued"}
-{"id": "2124441515196129660", "author": "nasuvit_z", "received_at": 1795356444.0, "state": "queued"}
-{"id": "2124467826643607793", "author": "sermakarevich", "received_at": 1795356444.0, "state": "queued"}
-{"id": "2124472260404871206", "author": "karthikponna19", "received_at": 1795364012.0, "state": "queued"}
-{"id": "2124493122549715437", "author": "0xwhrrari", "received_at": 1795356444.0, "state": "queued"}
-{"id": "2124510548070895895", "author": "dair_ai", "received_at": 1795364012.0, "state": "queued"}
-{"id": "2124441515196129660", "author": "nasuvit_z", "received_at": 1795356444.0, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2124406133427167445", "author": "nurijanian", "received_at": 1795356444.0, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2124467826643607793", "author": "sermakarevich", "received_at": 1795356444.0, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2124138527189331995", "author": "0xwhrrari", "received_at": 1795287174.0, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2124105677748527453", "author": "0xTrackmind", "received_at": 1795287174.0, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2123855918626451593", "author": "maestrooth", "received_at": 1795287174.0, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2124493122549715437", "author": "0xwhrrari", "received_at": 1795356444.0, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2124406133427167445", "author": "nurijanian", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md"}
-{"id": "2124493122549715437", "author": "0xwhrrari", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md"}
-{"id": "2123855918626451593", "author": "maestrooth", "received_at": 1795287174.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md"}
-{"id": "2124441515196129660", "author": "nasuvit_z", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md"}
-{"id": "2124105677748527453", "author": "0xTrackmind", "received_at": 1795287174.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md"}
-{"id": "2124138527189331995", "author": "0xwhrrari", "received_at": 1795287174.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md"}
-{"id": "2124467826643607793", "author": "sermakarevich", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md"}
-{"id": "2124260948256907704", "author": "0xCodez", "received_at": 1795364240.745116, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2124510548070895895", "author": "dair_ai", "received_at": 1795364012.0, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2124472260404871206", "author": "karthikponna19", "received_at": 1795364012.0, "state": "receipted", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json"}
-{"id": "2124260948256907704", "author": "0xCodez", "received_at": 1795364240.745116, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:5x)", "analysis": "research/2026-11-22-posts-outcomes.md"}
-{"id": "2124510548070895895", "author": "dair_ai", "received_at": 1795364012.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:5x)", "analysis": "research/2026-11-22-posts-outcomes.md"}
-{"id": "2124472260404871206", "author": "karthikponna19", "received_at": 1795364012.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:5x)", "analysis": "research/2026-11-22-posts-outcomes.md"}
+{"id": "2063186118409929161", "author": "nurijanian", "received_at": 1794317018.584061, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2069824386283319343", "author": "poteto", "received_at": 1792654808.871254, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2092198860500201545", "author": "nurijanian", "received_at": 1793239039.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2094457600259842065", "author": "poteto", "received_at": 1794678108.8691204, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2097732320606507506", "author": "poteto", "received_at": 1794678108.8691204, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2101309986156712025", "author": "akshay_pachaar", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2101454284927959080", "author": "LangChain", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2101672304358948992", "author": "rasbt", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2102059089652285739", "author": "socialwithaayan", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2102370303905071479", "author": "ZoharEiny", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2102430863732732194", "author": "ScaleWthAI", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2103571281014861957", "author": "poteto", "received_at": 1794678108.8691204, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2104214116999278874", "author": "akshay_pachaar", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2104783226833186920", "author": "Mr_Buzzoni", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2106453816757354947", "author": "sermakarevich", "received_at": 1793943966.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2107895957933408429", "author": "ClaudeDevs", "received_at": 1791466413.2176168, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2109554523316646147", "author": "LukeParkerDev", "received_at": 1791796947.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2112276257618743598", "author": "shengkunye", "received_at": 1792672727.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2112287872615387215", "author": "vasuman", "received_at": 1792496293.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2112876555907064008", "author": "yifanxu_ephai", "received_at": 1792655860.537944, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2112902388302467493", "author": "JoshARosen", "received_at": 1792599419.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2112936525457740139", "author": "GitHubNext", "received_at": 1792672727.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2112946991898525779", "author": "imbabybrooklyn", "received_at": 1792652765.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2113130441058455651", "author": "rlaope", "received_at": 1792656138.6206143, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2115253465693737317", "author": "tvytlx", "received_at": 1793260687.4862711, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2115477935482118345", "author": "ndrezn", "received_at": 1793240499.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2115614748742218045", "author": "mdp_sec", "received_at": 1795141750.7492194, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2116237813582582072", "author": "o_kwasniewski", "received_at": 1793535016.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2116533552288563205", "author": "huangruiteng", "received_at": 1793541301.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2116547247018229999", "author": "omarsar0", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2116857257245987236", "author": "DeepSeekHarness", "received_at": 1793541301.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2117956378065088750", "author": "annabellschfr", "received_at": 1793943831.0721142, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2117980022250316282", "author": "ladyxtel", "received_at": 1793869029.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2118315489831117028", "author": "HermesAgentTips", "received_at": 1795160275.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2118327478250840140", "author": "0xwhrrari", "received_at": 1793943997.259455, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2118351912689181174", "author": "AISuperDomain", "received_at": 1793972120.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2118411592627052937", "author": "BHolmesDev", "received_at": 1793941713.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2118434380435657033", "author": "adibvafa", "received_at": 1793940792.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2118434475973726697", "author": "sydneyrunkle", "received_at": 1793940904.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2118625742296678466", "author": "robertpenner", "received_at": 1793962231.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2118678768730403042", "author": "HermesAgentTips", "received_at": 1793970981.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119332146485891501", "author": "addyosmani", "received_at": 1794136174.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119342124143448127", "author": "accekid", "received_at": 1794662140.708569, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119407942696878411", "author": "sermakarevich", "received_at": 1794147726.70563, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2119429272599474240", "author": "Ronny_MiniMax", "received_at": 1794148272.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119475019093073943", "author": "code_barbarian", "received_at": 1794224817.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119730968437432423", "author": "Mr_Buzzoni", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119739525752918340", "author": "witcheer", "received_at": 1794289552.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2119744423101645301", "author": "ai_database", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2119806541821776215", "author": "beamnxw", "received_at": 1794282796.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119808229236699466", "author": "LimestoneHQ", "received_at": 1794282866.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119829427010044261", "author": "CrazyShyyt", "received_at": 1794313258.741602, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119837532502315503", "author": "LangChain", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119851595836092686", "author": "davekiss", "received_at": 1794282558.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119901794377531572", "author": "brivael", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2119950162772582491", "author": "heydengai", "received_at": 1794316966.0729675, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2119971224113803483", "author": "xiaomovps", "received_at": 1794313258.741602, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120018866126623163", "author": "mylifcc", "received_at": 1794316899.085806, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2120022348925640771", "author": "MahyadGhassemi", "received_at": 1794297011.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120041783568875653", "author": "TiagerBao", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2120047621549306158", "author": "minheo93698092", "received_at": 1794401159.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120077716460572735", "author": "ai_database", "received_at": 1794308168.5005116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120128085383360746", "author": "cu30rry_", "received_at": 1794313204.0242412, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2120131864904286636", "author": "ai_database", "received_at": 1794316866.6856735, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120205576831734008", "author": "hey_strengerss", "received_at": 1794662140.708569, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120219078778609721", "author": "0x_rody", "received_at": 1794363936.265301, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120221790689730769", "author": "boristane", "received_at": 1794391105.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120476128909435008", "author": "cu30rry_", "received_at": 1794401159.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120497986912530488", "author": "rlaope", "received_at": 1794401860.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2120838662254420341", "author": "mattpocockuk", "received_at": 1794484848.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2121635683999883577", "author": "hwchase17", "received_at": 1794679288.777266, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2121970248001990759", "author": "denohawari", "received_at": 1794918195.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2121972802811031985", "author": "HermesAgentTips", "received_at": 1794794981.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2122257368213819702", "author": "pontusab", "received_at": 1794907040.480432, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2122336732079161572", "author": "borjafat", "received_at": 1794902835.09453, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2122362571630194882", "author": "oprydai", "received_at": 1794922431.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2122391663889039828", "author": "hwchase17", "received_at": 1794922577.9488297, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2122581247553843259", "author": "ai_database", "received_at": 1794902781.140616, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2122590683055993308", "author": "addyosmani", "received_at": 1794902978.821293, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2122631856885846094", "author": "Arindam_1729", "received_at": 1794936929.347862, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2122661806241992758", "author": "IBuzovskyi", "received_at": 1795028335.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2122681113579782150", "author": "dchernyshuk", "received_at": 1794924305.350348, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2122703815992602992", "author": "dair_ai", "received_at": 1794933012.308476, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2122734341516345836", "author": "sydneyrunkle", "received_at": 1794936872.46356, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2122741561595162780", "author": "0xMfox", "received_at": 1794995021.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123005797332386071", "author": "ai_database", "received_at": 1795001375.505121, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123031990622437426", "author": "distortgeekin", "received_at": 1795013139.263067, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123088045155242111", "author": "willdjthrill", "received_at": 1795099917.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123143524530913734", "author": "JamesC_Alpha", "received_at": 1795189849.7323773, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123143588670263599", "author": "JamesC_Alpha", "received_at": 1795088752.8210998, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123156502559264849", "author": "CFDevelop", "received_at": 1795100049.2264528, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123159537016533493", "author": "poteto", "received_at": 1795052158.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2123298389551161411", "author": "mdp_sec", "received_at": 1795141676.6144862, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123402215272722806", "author": "sermakarevich", "received_at": 1795102202.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123434745728045425", "author": "annabellschfr", "received_at": 1795114467.0077763, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123439559669162160", "author": "maxxmalist", "received_at": 1795161824.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2123495357036605797", "author": "BHolmesDev", "received_at": 1795138301.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123656067145990575", "author": "jaydwivedi_", "received_at": 1795155551.14249, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2123740644736958772", "author": "charureadss", "received_at": 1795248133.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123855918626451593", "author": "maestrooth", "received_at": 1795287174.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123861436380131398", "author": "Da7_Tech", "received_at": 1795232745.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123882430620733742", "author": "NousResearch", "received_at": 1795228045.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2124039417153347708", "author": "Teknium", "received_at": 1795245657.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124105677748527453", "author": "0xTrackmind", "received_at": 1795287174.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124138527189331995", "author": "0xwhrrari", "received_at": 1795287174.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124260948256907704", "author": "0xCodez", "received_at": 1795364240.745116, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124294531214385183", "author": "dabit3", "received_at": 1795358473.897717, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124406133427167445", "author": "nurijanian", "received_at": 1795356444.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124441515196129660", "author": "nasuvit_z", "received_at": 1795356444.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124467826643607793", "author": "sermakarevich", "received_at": 1795356444.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124472260404871206", "author": "karthikponna19", "received_at": 1795364012.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2124493122549715437", "author": "0xwhrrari", "received_at": 1795356444.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124510548070895895", "author": "dair_ai", "received_at": 1795364012.0, "state": "summarized", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124441515196129660", "author": "nasuvit_z", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124406133427167445", "author": "nurijanian", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124467826643607793", "author": "sermakarevich", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124138527189331995", "author": "0xwhrrari", "received_at": 1795287174.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124105677748527453", "author": "0xTrackmind", "received_at": 1795287174.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123855918626451593", "author": "maestrooth", "received_at": 1795287174.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124493122549715437", "author": "0xwhrrari", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124406133427167445", "author": "nurijanian", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124493122549715437", "author": "0xwhrrari", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2123855918626451593", "author": "maestrooth", "received_at": 1795287174.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124441515196129660", "author": "nasuvit_z", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124105677748527453", "author": "0xTrackmind", "received_at": 1795287174.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124138527189331995", "author": "0xwhrrari", "received_at": 1795287174.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124467826643607793", "author": "sermakarevich", "received_at": 1795356444.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:30)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124260948256907704", "author": "0xCodez", "received_at": 1795364240.745116, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124510548070895895", "author": "dair_ai", "received_at": 1795364012.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124472260404871206", "author": "karthikponna19", "received_at": 1795364012.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "2124260948256907704", "author": "0xCodez", "received_at": 1795364240.745116, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:5x)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124510548070895895", "author": "dair_ai", "received_at": 1795364012.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:5x)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md"}
+{"id": "2124472260404871206", "author": "karthikponna19", "received_at": 1795364012.0, "state": "summarized", "evidence": ".artifacts/posts-outcomes-20261122/raw/", "receipt": ".artifacts/posts-outcomes-20261122/receipts/receipts.json", "summary_ref": "telegram:OWNER_CHAT_ID:9267 (sent 22.11 ~22:5x)", "analysis": "research/2026-11-22-posts-outcomes.md", "synthesis": "docs/blueprint-from-posts.md (minor/offtopic)"}
+{"id": "omh-fanout-pr3122-20261123", "author": "oh-my-hermes", "received_at": 1795358600.0, "state": "applied", "synthesis": "docs/blueprint-from-posts.md#дополнение-2311--oh-my-hermes-fanout-pr-3122-mainunreleased", "applied": "~/.hermes/skills/t3-work-bridge/SKILL.md delegate-acceptance section; cron pause 0adb2e01dd13+eed9ea1c0e41"}
