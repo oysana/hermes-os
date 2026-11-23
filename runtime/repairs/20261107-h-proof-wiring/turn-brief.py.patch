@@ -1,0 +1,10 @@
+--- a/shared/proactive/turn-brief.py
++++ b/shared/proactive/turn-brief.py
+@@ -934,6 +934,7 @@
+             "the card's own terminal event delivers the wake its subscription promised. "
+             "Still running → leave it parked; the owning worker or a later turn retries — do not redispatch. "
+             "Thread gone or unreadable → `block` the card with the exact read error (explicit escalation).")
++    lines.append("Блок PROOF из отчёта T3 владельцу передавай дословно, без пересказа.")
+     return "\n".join(lines)
+ 
+ 

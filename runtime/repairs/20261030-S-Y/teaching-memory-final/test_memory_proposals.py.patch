@@ -1,0 +1,63 @@
+--- a/test_memory_proposals.py
++++ b/test_memory_proposals.py
+@@ -115,5 +115,60 @@
+         self.assertTrue(self.sweep())
+ 
+ 
++class MdDirectoryDoesNotMuteTests(unittest.TestCase):
++    def setUp(self):
++        self.temp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.temp.cleanup)
++        self.home = Path(self.temp.name)
++        self.now = p.iso('2026-10-30T09:00:00+05:00')
++        self.policy_data = {
++            'quiet_start': '23:00', 'quiet_end': '07:00', 'daily_cap': 3,
++            'exceptions': [], 'exception_jobs': {}, 'deadline_jobs': [],
++            'stdout_budgeted_jobs': ['sweep'],
++        }
++        p.atomic(self.home / 'policy.json', self.policy_data)
++        self.proposals = self.home / 'state/memory-proposals'
++        self.proposals.mkdir(parents=True)
++        self.enterContext(patch.object(p, 'ROOT', self.home))
++        self.enterContext(patch.object(p, 'POLICY', self.home / 'policy.json'))
++
++    def sweep(self, now=None):
++        out = io.StringIO()
++        p.sweep(self.home, now or self.now, self.policy_data, out)
++        return out.getvalue()
++
++    def test_md_directory_does_not_mute_real_proposals(self):
++        (self.proposals / 'real.md').write_text('# Synthetic proposal\n')
++        (self.proposals / 'archive.md').mkdir()  # a directory, not a proposal
++        output = self.sweep()
++        self.assertIn('Файлы', output)
++        self.assertIn('1', output)
++
++    def test_failed_file_probe_does_not_crash_sweep(self):
++        proposal = self.proposals / 'real.md'
++        proposal.write_text('# Synthetic proposal\n')
++        original = Path.is_file
++
++        def inspect(path):
++            if path == proposal:
++                raise PermissionError('synthetic file probe failure')
++            return original(path)
++
++        with patch.object(Path, 'is_file', inspect):
++            self.assertEqual(self.sweep(), '')
++
++    def test_directory_only_dir_yields_no_notice(self):
++        (self.proposals / 'stray.md').mkdir()
++        self.assertEqual(self.sweep(), '')
++
++    def test_md_directory_excluded_from_count(self):
++        (self.proposals / 'one.md').write_text('# One\n')
++        (self.proposals / 'two.md').write_text('# Two\n')
++        (self.proposals / 'nested.md').mkdir()
++        self.assertIn('2', self.sweep())
++
++
++
++
+ if __name__ == '__main__':
+     unittest.main()

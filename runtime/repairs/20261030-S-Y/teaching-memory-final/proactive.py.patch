@@ -1,0 +1,15 @@
+--- a/proactive.py
++++ b/proactive.py
+@@ -60,7 +60,11 @@
+ 
+ def memory_proposal_snapshot(directory):
+     """Fingerprint distinct proposal contents without interpreting their contents."""
+-    proposals = sorted(directory.glob('*.md'), key=lambda path: path.name)
++    try:
++        proposals = sorted((path for path in directory.glob('*.md') if path.is_file()),
++                           key=lambda path: path.name)
++    except OSError:
++        return [], None
+     if not proposals:
+         return proposals, None
+     content_fingerprints = set()

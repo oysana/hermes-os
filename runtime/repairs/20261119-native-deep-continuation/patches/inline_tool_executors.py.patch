@@ -1,0 +1,7 @@
+--- a/agent/inline_tool_executors.py
++++ b/agent/inline_tool_executors.py
+@@ -302,0 +303,2 @@
++        ("goal", "goal"),
++        platform=lambda agent, ctx: getattr(agent, "platform", "") or "",
+@@ -303,0 +306 @@
++        session_id=lambda agent, ctx: getattr(agent, "session_id", "") or "",

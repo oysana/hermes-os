@@ -1,0 +1,9 @@
+# H exact terminal return — installed 30.10.2026
+
+Existing return sweep now follows explicit current thread/run, exact settled terminal metadata and fresh native task controls; it does not infer completion from thread timestamps or unrelated comments. Shared turn-hook parser respects typed owner input, capability/dependency holds, scheduled tasks, active workers, ingested/paused states and explicit STOP/resume custody. Native unblock_task composes inside a single transaction with receipt insertion; failed receipt rolls everything back. No custom dispatcher, new schedule or daemon. Worker/default-board restrictions remain.
+
+Qualification: 32 native tests against exact candidate source in private network-unshared namespace via scripts/run_tests.sh; 151 focused hook tests; complete17step canonical check actual exit0; independent Gemini3.8Flash High through AGY found no real finding. Exact qualified bytes installed only after fresh original idle admission, worker count0, source drift checks and private backups. No H/S/Y model/provider/fallback/config changes, no service restart. Files are loaded by future hook/worker/cron subprocesses.
+
+Installed read-only current-board dry-run actual0 returned no action. No eligible existing card was resumed; OM remains paused. Actual autonomous H ingestion/artifact verification/Telegram delivery remains OPEN. Queue admission always reports delivered=false. A source or fixture pass is not owner delivery.
+
+Evidence retained privately in .artifacts/session-recovery-20261030/H-return-repair/{qualification.json,source-hashes.json,AGY-REVIEW.md,installation-receipt.json,installed-dry-run.log}. Do not rerun the one-shot installer. Native one-line patch baseline SHA19445aa5282dcd4d3e6dd19917fe5bec5bce197c2afb5b68fa9ba8a953a8c360; candidate d42deac95818e8cc4aea1e67ff06006b6820a097fb9b8cd4ae05760c5d7572cd.

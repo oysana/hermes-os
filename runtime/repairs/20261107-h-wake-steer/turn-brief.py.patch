@@ -1,0 +1,12 @@
+--- a/shared/proactive/turn-brief.py
++++ b/shared/proactive/turn-brief.py
+@@ -912,7 +912,8 @@
+ def t3_ingestion_brief(pending, limit=None):
+     shown = pending[:limit] if limit else pending
+     lines = ["Pending T3 ingestion (native): these H cards are parked on a T3 thread — "
+-             "kanban wakes on card terminal events, never on T3 state, so only this turn rescues them:"]
++             "kanban wakes on claimable board events, never on T3 state; the sweep's park "
++             "event wakes the origin, but only this turn writes the ingestion verdict:"]
+     for card in shown:
+         where = f" run {card['run']}" if card.get("run") else ""
+         lines.append(f"- {card['id']} «{card['title']}» waits on thread {card['thread']}{where}")

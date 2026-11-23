@@ -1,0 +1,101 @@
+--- a/tools/todo_tool.py
++++ b/tools/todo_tool.py
+@@ -4 +4,7 @@
+-``todos`` to write, omit to read; every call returns the full list. No system-prompt mutation."""
++``todos`` to write, omit to read; every call returns the full list. No system-prompt mutation.
++
++An optional ``goal`` field registers the session's durable goal through
++``hermes_cli.goals.register_session_goal`` — the same ``goal:<session_id>`` store /goal writes,
++so the existing post-turn judge can schedule continuation on supported gateway paths. The
++in-memory list stays in-memory; ``goal`` is the one deliberate bridge from model planning
++to durable continuation, and it fires only when the model passes it explicitly."""
+@@ -200,0 +207,17 @@
++def _apply_session_goal(goal: Any, session_id: str, platform: str) -> dict[str, Any]:
++    """Validate the ``goal`` argument at the tool boundary, then register it."""
++    if platform != "telegram":
++        return {"ok": False, "error": "goal registration through todo_list is enabled only for Telegram"}
++    if not isinstance(goal, dict):
++        return {"ok": False, "error": f"goal must be an object, got {type(goal).__name__}"}
++    if set(goal) - {"objective", "contract"}:
++        return {"ok": False, "error": "unknown goal field"}
++    try:
++        from hermes_cli.goals import register_session_goal
++    except ImportError as exc:
++        return {"ok": False, "error": f"goal registration unavailable: {exc}"}
++    return register_session_goal(
++        session_id, goal.get("objective"),
++        contract=goal.get("contract"))
++
++
+@@ -202,2 +225,4 @@
+-              store: Optional[TodoStore] = None) -> str:
+-    """Write ``todos`` (replace, or ``merge`` by id) or read when None -> list + summary JSON."""
++              store: Optional[TodoStore] = None, goal: Any = None,
++              session_id: str = "", platform: str = "") -> str:
++    """Write ``todos`` (replace, or ``merge`` by id) or read when None -> list + summary JSON.
++    ``goal`` additionally registers a durable session goal; its result rides in the payload."""
+@@ -218,2 +243,6 @@
+-    return json.dumps({"todos": items, "revision": store.snapshot()["revision"],
+-                       "summary": summary}, ensure_ascii=False)
++    goal_result = _apply_session_goal(goal, session_id, platform) if goal is not None else None
++    payload: dict[str, Any] = {"todos": items, "revision": store.snapshot()["revision"],
++                               "summary": summary}
++    if goal_result is not None:
++        payload["goal"] = goal_result
++    return json.dumps(payload, ensure_ascii=False)
+@@ -278,0 +308,51 @@
++            },
++            "goal": {
++                "type": "object",
++                "description": (
++                    "Telegram-only durable goal registration, using the native loop for "
++                    "continuation beyond the turn. Pass ONLY when the user asked for "
++                    "long-running/multi-phase work that must keep going after this "
++                    "reply (monitored tasks, verified deliverables, 'keep working until "
++                    "done'). Registers the session goal exactly like /goal: after each "
++                    "turn the work is judged against the contract and continued until "
++                    "done, paused, cleared, or out of budget. Omit for ordinary "
++                    "requests — the list alone does not schedule another turn. Re-passing the "
++                    "same objective preserves the contract and progress."
++                ),
++                "properties": {
++                    "objective": {
++                        "type": "string",
++                        "description": "The user's durable goal in their words — not a task item."
++                    },
++                    "contract": {
++                        "type": "object",
++                        "description": (
++                            "What the judge checks before calling the work done — the same "
++                            "fields /goal draft produces. Give the ones the user can verify."
++                        ),
++                        "properties": {
++                            "outcome": {
++                                "type": "string",
++                                "description": "Concrete finished state (e.g. 'both artifacts written and verified')."
++                            },
++                            "verification": {
++                                "type": "string",
++                                "description": "How done is proven (files on disk, test output, report)."
++                            },
++                            "constraints": {
++                                "type": "string",
++                                "description": "What must not regress or change while working."
++                            },
++                            "boundaries": {
++                                "type": "string",
++                                "description": "What is in/out of scope (files, systems, send targets)."
++                            },
++                            "stop_when": {
++                                "type": "string",
++                                "description": "When to stop and surface instead of continuing (e.g. 'before asking the user questions')."
++                            }
++                        }
++                    },
++
++                },
++                "required": ["objective"]
+@@ -335 +415,2 @@
+-        todos=args.get("todos"), merge=args.get("merge", False), store=kw.get("store")),
++        todos=args.get("todos"), merge=args.get("merge", False), store=kw.get("store"),
++        goal=args.get("goal"), session_id=kw.get("session_id") or "", platform=kw.get("platform") or ""),

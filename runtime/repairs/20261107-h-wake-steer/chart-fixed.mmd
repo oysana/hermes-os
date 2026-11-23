@@ -1,0 +1,30 @@
+---
+title: "T3 return: card waits, sweep receipts, origin must wake"
+---
+stateDiagram-v2
+  state "Legend" as legend {
+    lg0: waiting
+    lg1: returning
+    lg2: settled
+  }
+  class lg0 blue
+  class lg1 teal
+  class lg2 pink
+  s0: Run in flight
+  s1: Run finished, sweep not yet seen
+  s2: Receipt parked, wake on the way
+  s3: Origin awake, ingestion pending
+  s4: Origin ingested #8212; closing follows
+  s5: Card closed #8212; origin was told
+  [*] --> s0
+  s0 --> s1: the T3 run ends
+  s1 --> s2: sweep writes the return receipt
+  s2 --> s3: the notifier wakes the origin session
+  s3 --> s4: the origin records ingestion or a reason
+  s4 --> s5: sweep closes the card [with ingestion or a reason]
+  class s0 blue
+  class s1 blue
+  class s2 blue
+  class s3 teal
+  class s4 teal
+  class s5 pink

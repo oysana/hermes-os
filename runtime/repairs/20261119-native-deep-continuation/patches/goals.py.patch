@@ -1,0 +1,57 @@
+--- a/hermes_cli/goals.py
++++ b/hermes_cli/goals.py
+@@ -1591,0 +1592,52 @@
++# ── Model-facing registration (todo_list ``goal`` field) ────────────────
++
++def register_session_goal(session_id: str, objective: Any, *,
++                          contract: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
++    """Explicit model registration in the native goal row, without changing owner controls."""
++    if not isinstance(objective, str) or not objective.strip():
++        return {"ok": False, "error": "goal.objective must be a nonempty string"}
++    if not isinstance(session_id, str) or not session_id.strip():
++        return {"ok": False, "error": "no session id for durable registration"}
++    from agent.delegation_context import is_delegated_child_process_context
++    if is_delegated_child_process_context():
++        return {"ok": False, "error": "return delegated work to its parent instead of creating a goal"}
++    if contract is not None and (not isinstance(contract, dict)
++            or set(contract) - set(_CONTRACT_FIELDS)
++            or any(not isinstance(value, str) for value in contract.values())):
++        return {"ok": False, "error": "goal.contract requires native contract fields with string values"}
++    objective = objective.strip()
++    parsed_contract = GoalContract.from_dict(contract)
++    db = _get_session_db()
++    if db is None:
++        return {"ok": False, "error": "goal could not be persisted: session DB unavailable"}
++    from hermes_cli.config import load_config
++    configured = int(((load_config() or {}).get("goals") or {}).get("max_turns") or DEFAULT_MAX_TURNS)
++
++    def write(conn):
++        raw = conn.execute("SELECT value FROM state_meta WHERE key=?", (_meta_key(session_id),)).fetchone()
++        existing = GoalState.from_json(raw[0]) if raw else None
++        if existing is not None:
++            if existing.status in {"paused", "cleared"}:
++                return {"ok": False, "status": existing.status, "error": "owner control prevents registration"}
++            if existing.goal == objective:
++                if contract is not None and existing.contract != parsed_contract:
++                    return {"ok": False, "error": "existing goal contract cannot be replaced by replay"}
++                return {"ok": True, "goal": existing.goal, "status": existing.status,
++                        "turns_used": existing.turns_used, "max_turns": existing.max_turns,
++                        "updated_contract": False}
++            if existing.status != "done":
++                return {"ok": False, "error": "a different goal already owns this session"}
++        state = GoalState(goal=objective, created_at=time.time(), max_turns=configured,
++                          contract=parsed_contract)
++        db.set_meta(_meta_key(session_id), state.to_json(), cursor=conn.cursor())
++        return {"ok": True, "goal": state.goal, "status": state.status,
++                "turns_used": state.turns_used, "max_turns": state.max_turns,
++                "updated_contract": state.has_contract()}
++
++    try:
++        return db._execute_write(write)
++    except Exception as exc:
++        logger.warning("Goal registration not committed: %s", type(exc).__name__)
++        return {"ok": False, "error": "goal could not be persisted"}
++
++
+@@ -1776,0 +1829 @@
++    "register_session_goal",

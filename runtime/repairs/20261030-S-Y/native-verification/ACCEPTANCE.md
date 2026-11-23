@@ -1,0 +1,9 @@
+# Native CLI verification and complete final results — 30.10.2026
+
+Installed only two changes to existing verification reminder text: run an observable direct temporary check before cleanup; then return the original requested results and file references with the verification result. Roles, history, evidence classifier, permissions, models, fallback and service state unchanged. auto verification remains disabled for Telegram and enabled for CLI/background workers.
+
+Qualified: native canonical scripts/run_tests.sh 12/12 using a private read-only candidate mount with SHA checked inside it; Hermes Pro check.sh all17 actual exit0; AGY independent source review NO REAL FINDING; fresh original idle admission, byte-drift checks and private backup before installation. Candidate SHA dee8049e843f1e51280dd24ef87260fae9244c4ed8465b2dd6daa584e8b25788; baseline a1621d646c43c2b8c79e01b633bd588e6c6522ddb12a48f2ed00f929f8a49068.
+
+Observed S Terra CLI: original before case lost result files in final answer after verification. Installed-code runs returned all three actual files; tracked-write case executed a separate temporary checker successfully, cleaned its owned script and retained files in final answer. Root independently re-executed SQL, real CHECK error and COMMIT/ROLLBACK70/30. Outcome PASS is scoped to these synthetic CLI runs. The synthetic reminder text was not found in persisted user messages; its activation is inferred from the tool sequence, not a persisted callback receipt. No exclusive causal claim; no Telegram or original homework autonomous acceptance.
+
+Private evidence: .artifacts/session-recovery-20261030/native-verification-delivery/ and S-subject-acceptance/homework-verification-run-tracked-write-r2/. Unknown upstream provenance of local native snapshot remains disclosed. Patch applies only to the pinned baseline; do not blindly overwrite a future runtime revision.

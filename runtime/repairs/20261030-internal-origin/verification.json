@@ -1,0 +1,93 @@
+{
+  "source_canonical": {
+    "actual_exit": 0,
+    "steps": [
+      "plan-coverage",
+      "native-memory",
+      "source-admission",
+      "proactive",
+      "required-checks-plugin",
+      "acceptance-capture",
+      "konspekt",
+      "communications",
+      "y-watchers",
+      "smartnation-intake",
+      "wiring",
+      "acceptance-runner",
+      "acceptance-dry-run",
+      "acceptance-boundaries",
+      "video-pipeline",
+      "harness",
+      "native-progress",
+      "group-addressing",
+      "comment-gate"
+    ],
+    "matching_ok": true,
+    "source_hashes": {
+      "candidate/turn-brief.py": "1ccfbd538dd01e5e7018b515bc92f246746363eaedf42808570b972db9b0205c",
+      "candidate/test_turn_brief.py": "9be8f3a3b52c82301d550224c0058723a3410450ad80c7d69a2457985985f9ae",
+      "candidate/turn_brief_rules.json": "5cd4d38183773ccb7fbc549ca31e40d733f9a06e60d3fe8f52504b65a5bb493d",
+      "candidate/shell_hooks.py": "dca2472bc2dec889dffe5f44dd9a424e3452ac24e93a86cbc421c707f65676e5",
+      "tests/agent/test_shell_hooks_parent_session.py": "ee90381cb2cfa48d954213b4b3af723b2a1642a60e398ec34ee146d3a1ae5a20"
+    }
+  },
+  "native_producer": {
+    "actual_exit": 0,
+    "passed": 55,
+    "windows_skips": 2
+  },
+  "installed": {
+    "installed_hashes_match": true,
+    "installed_origin_tests": {
+      "actual_exit": 0,
+      "passed": 18,
+      "scope": "public stdin fixture tests of installed hook"
+    },
+    "installed_profile_harness": {
+      "actual_exit": 0,
+      "profiles": [
+        "H",
+        "S",
+        "Y"
+      ],
+      "model_calls": 0,
+      "scope": "configuration and hook execution only"
+    },
+    "retired_duplicate_owner_rows": {
+      "default": 1,
+      "sqecea": 51,
+      "yqecea": 14
+    },
+    "total_records_preserved": true,
+    "genuine_owner_rows_changed": false,
+    "remaining_positive_internal_open_rows": 0,
+    "gateway_restarted": false,
+    "models_providers_permissions_changed": false,
+    "natural_new_internal_model_turn": "not observed by this receipt"
+  },
+  "post_install_natural_observation": {
+    "scope": "existing real H/S/Y internal runs after installation; metadata and all-status ledger ID-prefix projection only",
+    "profiles": {
+      "H": {
+        "new_internal_sessions": 2,
+        "new_subagents": 0,
+        "assistant_turns": 52,
+        "owner_ledger_rows_created": 0
+      },
+      "S": {
+        "new_internal_sessions": 9,
+        "new_subagents": 7,
+        "assistant_turns": 96,
+        "owner_ledger_rows_created": 0
+      },
+      "Y": {
+        "new_internal_sessions": 12,
+        "new_subagents": 8,
+        "assistant_turns": 138,
+        "owner_ledger_rows_created": 0
+      }
+    },
+    "message_bodies_read": false,
+    "H_fresh_internal_run_observed": true
+  }
+}

@@ -1,0 +1,6 @@
+--- a/tg-personal.py
++++ b/tg-personal.py
+@@ -308 +308,2 @@
+-                            request_retries=0, flood_sleep_threshold=0, **status_options)
++                            request_retries=0, flood_sleep_threshold=0,
++                            receive_updates=args.action == "watch", **status_options)

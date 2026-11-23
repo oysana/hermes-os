@@ -1,0 +1,5 @@
+name: owner-continuity
+description: Restore the owner's Telegram queue and follow profile settings in the same conversation.
+events:
+  - gateway:startup
+  - agent:start

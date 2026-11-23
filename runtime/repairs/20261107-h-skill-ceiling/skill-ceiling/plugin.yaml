@@ -1,0 +1,11 @@
+name: skill-ceiling
+version: 1.0.0
+description: >-
+  SKILL.md growth ceiling: a pre_tool_call veto on skill_manage so no write
+  (interactive or background review) leaves SKILL.md over 25,000 chars and
+  longer than before. Shrinking writes pass; supporting files are never gated;
+  the refusal says to move detail into references/. Fail-open: hook errors allow
+  the call and log to ~/.hermes/logs/skill-ceiling.jsonl. Emergency off:
+  HERMES_SKILL_CEILING=off or touch ~/.hermes/plugins/skill-ceiling/OFF.
+provides_hooks:
+  - pre_tool_call

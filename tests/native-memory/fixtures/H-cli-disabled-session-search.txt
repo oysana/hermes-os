@@ -1,0 +1,4 @@
+Built-in toolsets (cli):
+  ✗ disabled  session_search
+  ✓ enabled  todo
+  ✓ enabled  cronjob

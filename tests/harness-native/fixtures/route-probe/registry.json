@@ -1,0 +1,11 @@
+{
+  "revision": 17,
+  "services": [
+    {"id": "atlas", "enabled": true, "batch": false},
+    {"id": "delta-old", "enabled": false, "batch": true},
+    {"id": "echo", "enabled": false, "batch": false},
+    {"id": "delta", "enabled": true, "batch": true},
+    {"id": "vega", "enabled": true, "batch": false},
+    {"id": "nova", "enabled": true, "batch": true}
+  ]
+}

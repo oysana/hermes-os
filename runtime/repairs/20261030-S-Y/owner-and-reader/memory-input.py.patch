@@ -1,0 +1,34 @@
+--- a/memory-input.py
++++ b/memory-input.py
+@@ -6,0 +7 @@
++import subprocess
+@@ -7,0 +9,22 @@
++
++
++def telegram_owner_id():
++    """Reuse the native account principal, never infer identity from a message's role."""
++    try:
++        child = subprocess.run(
++            [str(p.ROOT / 'profiles/yqecea/tools/tguser-env/bin/python'), '-B',
++             str(p.ROOT / 'shared/communications/tg-personal.py'), 'status'],
++            capture_output=True, text=True, timeout=3)
++        if child.returncode != 0:
++            return None
++        data = json.loads(child.stdout)
++        if not isinstance(data, dict):
++            return None
++        principal = data.get('principal')
++        if (data.get('authorized') is not True or data.get('personal_account') is not True
++                or not isinstance(principal, dict) or principal.get('platform') != 'telegram'):
++            return None
++        sender = principal.get('sender_id')
++        return sender if isinstance(sender, str) and sender.isascii() and sender.isdecimal() and int(sender) > 0 else None
++    except (OSError, subprocess.TimeoutExpired, ValueError):
++        return None
+@@ -13,0 +37,3 @@
++    owner = telegram_owner_id()
++    if owner is None:
++        return
+@@ -18 +44 @@
+-        rows = db.execute("SELECT m.id,m.session_id,m.role,m.content,m.timestamp,m.message_uid FROM messages m JOIN sessions s ON s.id=m.session_id WHERE s.source='telegram' AND m.role='user' AND COALESCE(m.display_kind,'')='' AND COALESCE(m._compressed_summary,0)=0 AND m.content NOT LIKE '%[INTERNAL NOTIFICATION%' AND m.timestamp>=? AND m.timestamp<? AND m.active=1 ORDER BY m.timestamp DESC LIMIT 120", (start.timestamp(),end.timestamp())).fetchall()
++        rows = db.execute("SELECT m.id,m.session_id,m.role,m.content,m.timestamp,m.message_uid FROM messages m JOIN sessions s ON s.id=m.session_id WHERE s.source='telegram' AND s.chat_type IN ('dm','private') AND s.user_id=? AND s.chat_id=? AND s.parent_session_id IS NULL AND m.role='user' AND COALESCE(m.display_kind,'')='' AND COALESCE(m._compressed_summary,0)=0 AND m.content NOT LIKE '%[INTERNAL NOTIFICATION%' AND m.timestamp>=? AND m.timestamp<? AND m.active=1 ORDER BY m.timestamp DESC LIMIT 120", (owner,owner,start.timestamp(),end.timestamp())).fetchall()

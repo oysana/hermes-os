@@ -1,0 +1,29 @@
+--- a/3d-model-delivery.md
++++ b/3d-model-delivery.md
+@@ -2,7 +2,11 @@
+ 
+ For graphics modeling tasks where Yusuf wants a file that opens in Blender — not code.
+ 
+-## Deliverable first
++## Choose the requested teaching or artifact path first
++
++When Yusuf asks how to repeat a step, understand an existing model, or build it manually with no prior knowledge, teach that exact operation first. Give the object and mode, exact click/key, small value and visible result; explain unfamiliar controls where they first appear. A script, generated model or render does not replace the requested explanation. Expand the lesson as needed; short notification limits do not apply to teaching. Build an artifact when he asks for it, or as a clearly identified optional illustration after the explanation. Keep a beginner scene recognisable and attractive through clean joins, materials, framing and light rather than extra geometry.
++
++## Deliverable first when an artifact is requested
+ 
+ - Build the artifact, verify it, deliver the FILE plus one line how to open it
+   (Blender → File → Import → glTF 2.0 for `.glb`). Never deliver only the generator.
+@@ -74,11 +78,8 @@
+ - Diagnose tilt from the bbox, not by eye: compare min/max Z across the ramp width — a 0.3+ m rise sideways means the plane itself is banked. Rebuild the ramp from 3 plain cubes (one tilted slab + two parallel side rails, uniform width ~1.0 m) instead of straightening the warped mesh — deleting the old meshes and re-adding primitives keeps every remaining part explainable as a basic shape.
+ - Text signs arrive as 2+ objects (dark board + separate letter meshes, often in an Information group). Delete the board AND the letters, then verify with two renders: a closeup proving the geometry fix and an overview with a full sign-text inventory proving nothing else vanished and no stray text remains.
+ - Simplify for explainability by removing micro-detail first (tile seams, wall dots/circles, mat/conveyor stripes, LED strips, thin glass end caps, decorative balls), then thinning repetition to a defensible count (3 products per shelf row, 1 label per shelf, ~12 balls in a pit). Keep every shelf visibly stocked — empty shelves read as a broken scene, not a simpler one.
+-- Drive link-preserving update: overwriting the same Drive file ID keeps the teacher's docx link valid, so no resubmission is needed — verify by comparing the Drive-reported size against the local file. A file inside a link-shared folder inherits writer access; Drive refuses a per-file downgrade below the inherited role, so do not promise read-only on the file alone.
++- Drive link-preserving update: change a file already linked in submitted coursework only after Yusuf explicitly approves that exact update. Otherwise preserve it and prepare a separate local version. After an approved update, verify the same Drive file ID and size; this verifies the file update, not teacher acceptance. A file inside a link-shared folder inherits writer access; Drive refuses a per-file downgrade below the inherited role, so do not promise read-only on the file alone.
+ 
+ ## Portal packaging
+ 
+-The answer form takes only pdf/png/zip/doc/… up to 20 MB — a raw `.stl`/`.glb`
+-can never attach. Pack each card's model with its rendered preview PNG into one
+-ZIP (deflate level 9; a 27 MB binary STL lands near 9 MB). Full attach recipe:
+-`references/smartnation-portal-login.md`.
++Portal file-extension support does not decide the assignment's submission format. For graded practicals, follow the latest owner rule: one `.docx`, with the screenshots required by the task, and explicit approval before upload. A requested editable `.blend`/`.glb`/`.stl` is a separate preparation/chat deliverable; a ZIP for transport does not become the portal submission. For a model-link assignment, use the teacher's required link document and preserve already submitted links. Resolve a genuine conflict with the teacher's requirement before uploading; do all independent preparation first. Full portal interaction recipe: `references/smartnation-portal-login.md`.

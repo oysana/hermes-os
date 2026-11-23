@@ -1,0 +1,347 @@
+[
+  {
+    "id": "positive-1",
+    "text": "Йусуф, какая API?",
+    "expected": true
+  },
+  {
+    "id": "positive-2",
+    "text": "Юсуф как дела?",
+    "expected": true
+  },
+  {
+    "id": "positive-3",
+    "text": "YUSUF what API?",
+    "expected": true
+  },
+  {
+    "id": "positive-4",
+    "text": "@yusuf сенде херместе чеза апишка тұр",
+    "expected": true
+  },
+  {
+    "id": "positive-5",
+    "text": "Йусуф, 2+2?",
+    "expected": true
+  },
+  {
+    "id": "positive-6",
+    "text": "Yusuf, API?",
+    "expected": true
+  },
+  {
+    "id": "positive-7",
+    "text": "Эй, Yusuf, ты придёшь?",
+    "expected": true
+  },
+  {
+    "id": "positive-8",
+    "text": "Скажи, Юсуф, когда встреча?",
+    "expected": true
+  },
+  {
+    "id": "positive-9",
+    "text": "Ты придёшь, Йусуф?",
+    "expected": true
+  },
+  {
+    "id": "positive-10",
+    "text": "Как дела, Yusuf?",
+    "expected": true
+  },
+  {
+    "id": "positive-11",
+    "text": "Hello, Yusuf, can you help?",
+    "expected": true
+  },
+  {
+    "id": "positive-12",
+    "text": "Ребята, Юсуф, можешь помочь?",
+    "expected": true
+  },
+  {
+    "id": "positive-13",
+    "text": "Ребята, @yusuf, ты придёшь?",
+    "expected": true
+  },
+  {
+    "id": "positive-14",
+    "text": "Есть время, @Юсуф?",
+    "expected": true
+  },
+  {
+    "id": "positive-15",
+    "text": "Кто поможет? @yUsUf",
+    "expected": true
+  },
+  {
+    "id": "positive-16",
+    "text": "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @yusuf?",
+    "expected": true
+  },
+  {
+    "id": "negative-1",
+    "text": "Юсуф завтра придет?",
+    "expected": false
+  },
+  {
+    "id": "negative-2",
+    "text": "Гость, Юсуф, завтра придет?",
+    "expected": false
+  },
+  {
+    "id": "negative-3",
+    "text": "Кто знает API Йусуфа?",
+    "expected": false
+  },
+  {
+    "id": "negative-4",
+    "text": "Yusufovich what API?",
+    "expected": false
+  },
+  {
+    "id": "negative-5",
+    "text": "Йусуф был вчера здесь",
+    "expected": false
+  },
+  {
+    "id": "negative-6",
+    "text": "Спасибо Йусуф",
+    "expected": false
+  },
+  {
+    "id": "negative-7",
+    "text": "Yusuf спасибо",
+    "expected": false
+  },
+  {
+    "id": "negative-8",
+    "text": "Yusuf is offline",
+    "expected": false
+  },
+  {
+    "id": "negative-9",
+    "text": "Йусуф не знает эту API",
+    "expected": false
+  },
+  {
+    "id": "negative-10",
+    "text": "Йусуф сказал вчера, какая API у Ахмета?",
+    "expected": false
+  },
+  {
+    "id": "negative-11",
+    "text": "Юсуф ответил вчера. Какая API у Ахмета?",
+    "expected": false
+  },
+  {
+    "id": "negative-12",
+    "text": "Yusuf is offline. Which API does Ahmet use?",
+    "expected": false
+  },
+  {
+    "id": "negative-13",
+    "text": "У Юсуфа есть время?",
+    "expected": false
+  },
+  {
+    "id": "negative-14",
+    "text": "Он написал «@yusuf, ты придёшь?»",
+    "expected": false
+  },
+  {
+    "id": "negative-15",
+    "text": "Он написал \"Yusuf, what API?\"",
+    "expected": false
+  },
+  {
+    "id": "negative-16",
+    "text": "Он написал '@yusuf can you help?'",
+    "expected": false
+  },
+  {
+    "id": "negative-17",
+    "text": "Цитата: `@yusuf can you help?`",
+    "expected": false
+  },
+  {
+    "id": "negative-18",
+    "text": "Он написал «@yusuf, ты придёшь?",
+    "expected": false
+  },
+  {
+    "id": "negative-19",
+    "text": "На почту hello@yusuf.example отправить?",
+    "expected": false
+  },
+  {
+    "id": "negative-20",
+    "text": "@yusuf.example кто поможет?",
+    "expected": false
+  },
+  {
+    "id": "negative-21",
+    "text": "@yusuf's schedule?",
+    "expected": false
+  },
+  {
+    "id": "negative-22",
+    "text": "super@yusuf кто поможет?",
+    "expected": false
+  },
+  {
+    "id": "negative-23",
+    "text": "Кто встречал superYusuf?",
+    "expected": false
+  },
+  {
+    "id": "negative-24",
+    "text": "Когда придет Юсуф?",
+    "expected": false
+  },
+  {
+    "id": "negative-25",
+    "text": "@yusuf спасибо",
+    "expected": false
+  },
+  {
+    "id": "negative-26",
+    "text": "@yusuf",
+    "expected": false
+  },
+  {
+    "id": "negative-27",
+    "text": "Кто поможет?",
+    "expected": false
+  },
+  {
+    "id": "negative-28",
+    "text": "@yusuf он сказал «что?»",
+    "expected": false
+  },
+  {
+    "id": "negative-29",
+    "text": "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @yusuf can you help?",
+    "expected": false
+  },
+  {
+    "id": "escaped-quote-body",
+    "text": "Он написал \"цитата \\\"@yusuf, ты придёшь?\\\" дальше\".",
+    "expected": false
+  },
+  {
+    "id": "escaped-code-body",
+    "text": "Код `цитата \\`@yusuf?`",
+    "expected": false
+  },
+  {
+    "id": "URL-substring",
+    "text": "Кто видел https://example.com/@yusuf?",
+    "expected": false
+  },
+  {
+    "id": "URL-query-owner-tag",
+    "text": "https://example.com/?to=@yusuf",
+    "expected": false
+  },
+  {
+    "id": "URL-fragment-owner-tag",
+    "text": "Кто видел https://example.com/#@yusuf?",
+    "expected": false
+  },
+  {
+    "id": "newline-vocative",
+    "text": "Эй, Yusuf,\nты придёшь?",
+    "expected": true
+  },
+  {
+    "id": "tag-outside-URL",
+    "text": "Кто видел https://example.com/?to=@other @yusuf?",
+    "expected": true
+  },
+  {
+    "id": "explicit-tag-thirdperson",
+    "text": "@yusuf завтра он придёт?",
+    "expected": true
+  },
+  {
+    "id": "markdown-outside",
+    "text": "Как дела? [ссылка](https://example.com/),@yusuf",
+    "expected": true
+  },
+  {
+    "id": "url-double-quotes",
+    "text": "Кто видел https://example.com/?note=\"x\"&to=@yusuf?",
+    "expected": false
+  },
+  {
+    "id": "url-single-quotes",
+    "text": "Кто видел https://example.com/?note='x'&to=@yusuf?",
+    "expected": false
+  },
+  {
+    "id": "url-quoted-fragment",
+    "text": "Кто видел https://example.com/?note=\"x\"#@yusuf?",
+    "expected": false
+  },
+  {
+    "id": "url-quotes-outside",
+    "text": "Кто видел https://example.com/?note=\"x\"&to=@yusuf? @Юсуф",
+    "expected": true
+  },
+  {
+    "id": "markdown-balanced",
+    "text": "Как дела? [ссылка](https://example.com/a_(b)),@yusuf",
+    "expected": true
+  },
+  {
+    "id": "parenthetical-balanced",
+    "text": "Как дела? (https://example.com/a_(b)),@yusuf",
+    "expected": true
+  },
+  {
+    "id": "bare-balanced",
+    "text": "Кто видел https://example.com/a_(b)?",
+    "expected": false
+  },
+  {
+    "id": "bare-balanced-outside",
+    "text": "Кто видел https://example.com/a_(b)? @yusuf",
+    "expected": true
+  },
+  {
+    "id": "quoted-url-guillemets",
+    "text": "«Кто видел https://example.com/?to=@yusuf?»",
+    "expected": false
+  },
+  {
+    "id": "quoted-url-double",
+    "text": "\"Кто видел https://example.com/?to=@yusuf?\"",
+    "expected": false
+  },
+  {
+    "id": "quoted-url-outside",
+    "text": "Как дела? «https://example.com/?to=@other»,@yusuf",
+    "expected": true
+  },
+  {
+    "id": "quoted-url-code",
+    "text": "`Кто видел https://example.com/?to=@yusuf?`",
+    "expected": false
+  },
+  {
+    "id": "unclosed-double-terminal-escape",
+    "text": "Он написал \"@yusuf?\\",
+    "expected": false
+  },
+  {
+    "id": "unclosed-single-terminal-escape",
+    "text": "Он написал '@yusuf?\\",
+    "expected": false
+  },
+  {
+    "id": "unclosed-backtick-terminal-escape",
+    "text": "Он написал `@yusuf?\\",
+    "expected": false
+  }
+]

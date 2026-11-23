@@ -1,0 +1,20 @@
+>       monkeypatch.setattr(goals, '_configured_goal_max_turns', lambda: 10)
+E       AttributeError: <module 'hermes_cli.goals' from '/home/yqecea/.hermes/hermes-agent/hermes_cli/goals.py'> has no attribute '_configured_goal_max_turns'
+
+tests/native-deep-continuation/test_native_deep_continuation.py:294: AttributeError
+=========================== short test summary info ============================
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_two_phase_registration_persists_durable_goal
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_stubbed_judge_continues_and_partial_progress_is_durable
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_done_verdict_ends_the_goal_without_continuation
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_reregister_same_objective_preserves_budget
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_different_objective_refused_not_replaced
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_contract_fields_outside_the_schema_refused
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_paused_goal_not_revived_by_registration
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_active_children_hold_parks_continuation
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_profile_scopes_are_isolated
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_missing_session_id_and_empty_objective_refused
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_delegated_child_refused
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_dropped_persistence_reported_not_claimed
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_plain_calls_and_executor_wiring
+FAILED tests/native-deep-continuation/test_native_deep_continuation.py::test_max_turns_clamped_to_configured_budget
+14 failed, 1 passed in 4.33s

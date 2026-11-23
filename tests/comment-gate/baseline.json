@@ -1,0 +1,6 @@
+[
+  {
+    "path": "shared/proactive/test_installed_r2.py",
+    "text": "# temporary home as ~/.hermes and expose the real delivery module the guard loads from there."
+  }
+]

@@ -1,0 +1,85 @@
+--- before/proactive.py
++++ after/proactive.py
+@@ -56,6 +56,25 @@
+ def content_digest(content):
+     # The cron script boundary strips surrounding whitespace before delivery.
+     return hashlib.sha256(content.strip().encode()).hexdigest()
++
++
++def memory_proposal_snapshot(directory):
++    """Fingerprint distinct proposal contents without interpreting their contents."""
++    proposals = sorted(directory.glob('*.md'), key=lambda path: path.name)
++    if not proposals:
++        return proposals, None
++    content_fingerprints = set()
++    for proposal in proposals:
++        try:
++            content = proposal.read_bytes()
++        except OSError:
++            return [], None
++        content_fingerprints.add(hashlib.sha256(content).hexdigest())
++    digest = hashlib.sha256()
++    for fingerprint in sorted(content_fingerprints):
++        digest.update(fingerprint.encode('ascii'))
++        digest.update(b'\n')
++    return proposals, digest.hexdigest()
+ 
+ 
+ def atomic(path, data, jsonl=False):
+@@ -165,7 +184,7 @@
+     outputs = ' '.join(task['outputs']).lower()
+     visual = bool(re.search(r'\b(?:visual(?:ization)?|tool[- ]brief|html)\b|визуал|разбор инструмента|рисунок|наглядн', outputs))
+     image_output = bool(re.search(r'\b(?:screenshots?|png|jpe?g|webp|image)\b|скриншот|скрин\b', outputs))
+-    file_output = visual or image_output or bool(re.search(r'\b(?:files?|pdf|docx|xlsx|svg)\b|файл', outputs))
++    file_output = visual or image_output or bool(re.search(r'\b(?:files?|pdf|docx|xlsx|svg)\b|файл|документ', outputs))
+     if file_output and not artifacts:
+         raise ValueError('file outputs require --artifact PATH')
+     paths = []
+@@ -191,7 +210,8 @@
+             finish = check_visual_finish(html, paths)
+             if finish not in paths:
+                 paths.append(finish)
+-    if 'receipt' in outputs and not (receipt or '').strip():
++    channel_output = bool(re.search(r'(?:ответ|сообщение|файл|документ|результат|решение)\w*\s+(?:в|на)\s+(?:тем|топик|чат|telegram|телеграм)', outputs))
++    if ('receipt' in outputs or channel_output) and not (receipt or '').strip():
+         raise ValueError('send outputs require --receipt <channel message id>')
+     if receipt is not None and not receipt.strip():
+         raise ValueError('--receipt requires a non-empty channel message id')
+@@ -395,11 +415,32 @@
+         cooling_decisions = {ident for ident, last in decision_times.items()
+                              if last and (now - iso(last)).total_seconds() < 7 * 86400}
+         candidates = []
+-        proposals = list((home / 'state/memory-proposals').glob('*.md'))
+-        memory_id = 'memory:' + now.date().isoformat()
+-        if proposals and now.strftime('%H:%M') >= '08:00' and not any(x.get('id') == memory_id for x in queue):
+-            queue.append(dict(id=memory_id, weight='today', text=f'Есть {len(proposals)} предложений для памяти — ответь «прими»/«покажи»',
+-                              memory_notice=True, delivered=False, expiry=now.replace(hour=23,minute=59,second=59).isoformat()))
++        proposals, proposal_fingerprint = memory_proposal_snapshot(home / 'state/memory-proposals')
++        memory_id = 'memory:' + proposal_fingerprint if proposal_fingerprint else None
++        memory_key = 'queue:' + memory_id if memory_id else None
++        memory_entry = next((item for item in queue if item.get('id') == memory_id), None)
++        if (proposals and now.strftime('%H:%M') >= '08:00'
++                and memory_key not in history['sent']):
++            if memory_entry and memory_entry.get('delivery_scope') == 'superseded-memory-snapshot':
++                memory_entry.update(delivered=False)
++                memory_entry.pop('delivery_scope', None)
++            if memory_entry and memory_entry.get('delivered'):
++                memory_entry = None
++            if memory_entry and memory_entry.get('expiry') and iso(memory_entry['expiry']) <= now:
++                memory_entry.update(expiry=now.replace(hour=23, minute=59, second=59).isoformat(), expired=False)
++                memory_entry.pop('expired_at', None)
++            for item in queue:
++                if (item.get('memory_notice') and item.get('id') != memory_id
++                        and not item.get('delivered')):
++                    item.update(delivered=True, delivery_scope='superseded-memory-snapshot')
++            notice = f'Файлы с предложениями памяти: {len(proposals)}.'
++            if memory_entry:
++                memory_entry.update(text=notice, weight='today', memory_notice=True,
++                                    expiry=now.replace(hour=23, minute=59, second=59).isoformat())
++            else:
++                queue.append(dict(id=memory_id, weight='today', text=notice,
++                                  memory_notice=True, delivered=False,
++                                  expiry=now.replace(hour=23, minute=59, second=59).isoformat()))
+         for task in tasks:
+             # Unresolved CLI origins are not permission to notify the home chat.
+             # Keep the task intact; require a concrete delivery destination.

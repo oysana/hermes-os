@@ -1,0 +1,3 @@
+# Installed H diagnostics and Y calendar repair — 30.10.2026
+
+Installed exact reviewed source after full canonical18/18 exit0, native35 and Y26 tests, fresh original idle admission and private backups. H returns stable metadata-only probe errors with nonzero exit so the existing native cron retains them. Y delegates fetch/pagination to installed GWS and validates all pages before recommendations; the native service PATH fallback was exercised read-only. No new daemon/schedule, restart or model/provider/config changes. Real project return and owner delivery remain separate acceptance. Private receipts: `.artifacts/session-recovery-20261030/H-Y-runtime-delta/`.

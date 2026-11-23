@@ -1,0 +1,19 @@
+{
+  "posts": 60,
+  "read_posts": 60,
+  "full_posts": 3,
+  "partial_posts": 44,
+  "unapplied_posts": 13,
+  "applicable_posts": 54,
+  "full_percent_all_posts": 5.0,
+  "any_percent_all_posts": 78.33,
+  "full_percent_applicable_posts": 5.56,
+  "topic_groups": 44,
+  "dispositions": {
+    "отложено": 47,
+    "отклонено": 10,
+    "внедрено": 3
+  },
+  "formula": "full/60; (full+partial)/60. Partial has no invented numeric weight.",
+  "limit": "Topic groups deduplicate discussion, not independent techniques or measured ROI."
+}

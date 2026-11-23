@@ -1,0 +1,206 @@
+--- /home/yqecea/.hermes/shared/proactive/test_turn_brief.py
++++ /home/yqecea/.hermes/shared/proactive/test_turn_brief.py
+@@ -9,0 +10 @@
++import sqlite3
+@@ -1497,0 +1499,201 @@
++ORIGIN_ENV_KEYS = ('HERMES_SESSION_SOURCE', 'HERMES_KANBAN_TASK')
++STATE_FILE = 'state/turn-brief.json'
++
++
++class InternalOriginTests(unittest.TestCase):
++    def setUp(self):
++        self.temp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.temp.cleanup)
++        self.home = Path(self.temp.name)
++        (self.home / 'scripts').mkdir()
++        (self.home / 'scripts/ledger').touch()
++        for name, path in [('HOME', self.home), ('PROJECTS_INDEX', self.home / 'PROJECTS.md'),
++                           ('SUBS_FILE', self.home / 'subs.jsonl')]:
++            fixture = patch.object(hook, name, path)
++            fixture.start()
++            self.addCleanup(fixture.stop)
++        self.calls = []
++        self.tasks = []
++        self.ktasks = []
++        self.kcalls = []
++
++    def kanban(self, *args):
++        self.kcalls.append(args)
++        if args[0] == 'list':
++            return True, json.dumps(self.ktasks)
++        return True, ""
++
++    def ledger(self, path, *args):
++        self.calls.append(args)
++        if args[0] == 'list':
++            return json.dumps(self.tasks)
++        if args[0] == 'add':
++            task_id = 'task' + str(len(self.tasks) + 1)
++            self.tasks.append(dict(id=task_id, title=args[args.index('--title') + 1],
++                                   dest=args[args.index('--dest') + 1],
++                                   source=args[args.index('--source') + 1], status='open'))
++            return task_id
++        return args[1]
++
++    def session_row(self, source=None, created_source=None, session_key=None,
++                    parent_session_id=None, session='s1', profile='default'):
++        home = self.home if profile in ('', 'default', 'hqecea') else self.home / 'profiles' / profile
++        conn = sqlite3.connect(home / 'state.db')
++        conn.execute('CREATE TABLE IF NOT EXISTS sessions '
++                     '(id TEXT PRIMARY KEY, source TEXT, created_source TEXT, '
++                     'session_key TEXT, parent_session_id TEXT)')
++        conn.execute('INSERT OR REPLACE INTO sessions VALUES (?,?,?,?,?)',
++                     (session, source, created_source, session_key, parent_session_id))
++        conn.commit()
++        conn.close()
++
++    def invoke(self, text, session='s1', turn='t1', profile='default', platform=None,
++               parent_session_id=None, env=None):
++        extra = dict(user_message=text, turn_id=turn)
++        if platform is not None:
++            extra['platform'] = platform
++        payload = dict(profile=profile, session_id=session, extra=extra)
++        if parent_session_id is not None:
++            payload['parent_session_id'] = parent_session_id
++        out = io.StringIO()
++        with patch.dict(os.environ, env or {}) as environ, \
++                patch.object(hook, 'HOME', self.home), patch.object(hook, 'run', self.ledger), \
++                patch.object(hook, 'run_kanban', self.kanban), \
++                patch('sys.stdin', io.StringIO(json.dumps(payload))), \
++                contextlib.redirect_stdout(out):
++            for key in ORIGIN_ENV_KEYS:
++                if key not in (env or {}):
++                    environ.pop(key, None)
++            hook.main()
++        return json.loads(out.getvalue())['context']
++
++    def added(self):
++        return [c for c in self.calls if c[0] == 'add']
++
++    def test_internal_subagent_prompt_captures_no_owner_task(self):
++        context = self.invoke('Нарисуй схему архитектуры и пришли отчёт',
++                              platform='subagent', parent_session_id='parent9')
++        self.assertEqual(self.added(), [])
++        self.assertEqual(self.tasks, [])
++        self.assertNotIn('Captured ledger task', context)
++        self.assertIn('Internal turn', context)
++
++    def test_internal_visual_prompt_locks_no_task_contract(self):
++        context = self.invoke('Объясни тему циклов и нарисуй схему',
++                              platform='subagent', parent_session_id='parent9')
++        self.assertEqual(self.added(), [])
++        self.assertFalse(any('визуал' in arg or 'visual-output' in arg
++                             for call in self.calls for arg in call), self.calls)
++        self.assertNotIn('Captured ledger task', context)
++        self.assertFalse((self.home / STATE_FILE).exists())
++
++    def test_owner_cli_capture_still_lands(self):
++        context = self.invoke('Проверь сайт', platform='cli')
++        self.assertEqual(len(self.added()), 1)
++        self.assertEqual(len(self.tasks), 1)
++        self.assertIn('task1', context)
++
++    def test_owner_telegram_capture_still_lands(self):
++        self.invoke('Проверь сайт', platform='telegram', session='tg1')
++        self.assertEqual(len(self.added()), 1)
++
++    def test_kanban_worker_env_captures_no_duplicate(self):
++        context = self.invoke('Проверь сайт', platform='cli',
++                              env={'HERMES_SESSION_SOURCE': 'kanban',
++                                   'HERMES_KANBAN_TASK': 't_fixture'})
++        self.assertEqual(self.added(), [])
++        self.assertEqual(self.tasks, [])
++        self.assertFalse((self.home / STATE_FILE).exists())
++        self.assertIn('kanban', context)
++
++    def test_owner_compressed_session_with_parent_still_captures(self):
++        self.session_row(source='cli', parent_session_id='parent9')
++        context = self.invoke('Проверь сайт', platform='cli', parent_session_id='parent9')
++        self.assertEqual(len(self.added()), 1)
++        self.assertIn('task1', context)
++
++    def test_repeated_internal_prompts_leave_state_untouched(self):
++        for turn in ('t1', 't2'):
++            self.invoke('Нарисуй схему и пришли отчёт', platform='subagent',
++                        parent_session_id='p', turn=turn)
++        self.assertEqual([c[0] for c in self.calls], ['list', 'list'])
++        self.assertFalse((self.home / STATE_FILE).exists())
++
++    def test_session_row_marks_internal_when_payload_is_silent(self):
++        self.session_row(source='subagent')
++        context = self.invoke('Проверь сайт', platform='cli', session='s1')
++        self.assertEqual(self.added(), [])
++        self.assertIn('Internal turn', context)
++
++    def test_unknown_session_source_stays_owner_capable(self):
++        self.session_row(source='unknown')
++        self.invoke('Проверь сайт', platform='cli')
++        self.assertEqual(len(self.added()), 1)
++
++    def test_no_session_row_stays_owner_capable(self):
++        self.invoke('Проверь сайт', platform='cli', session='never-recorded')
++        self.assertEqual(len(self.added()), 1)
++
++    def test_owner_api_and_recovered_surfaces_still_capture(self):
++        for source in ('api_server', 'recovered'):
++            with self.subTest(source=source):
++                self.tasks=[];self.calls=[]
++                self.session_row(source=source, session=source)
++                self.invoke('Проверь сайт', platform=source, session=source)
++                self.assertEqual(len(self.added()),1)
++
++    def test_internal_long_code_task_does_not_force_visual_format(self):
++        (self.home/'profiles/sqecea/scripts').mkdir(parents=True)
++        (self.home/'profiles/sqecea/scripts/ledger').touch()
++        context=self.invoke('Подготовь программу C# и проверь её. '+('Сохрани исходник и результат исполнения. '*15),
++                            profile='sqecea',platform='subagent')
++        self.assertEqual(self.added(),[])
++        self.assertNotIn('Keep prose to captions',context)
++        self.assertNotIn('Before delivering a visual',context)
++
++    def test_internal_turn_does_not_inherit_unrelated_due_owner_work(self):
++        self.tasks=[{'id':'other','title':'UNRELATED_OWNER_TASK','status':'open',
++                     'due':'2020-01-01T10:00:00+05:00','next':'unrelated','outputs':[]}]
++        context=self.invoke('Проверь исходный код',platform='subagent')
++        self.assertNotIn('UNRELATED_OWNER_TASK',context)
++        self.assertEqual(self.added(),[])
++
++    def test_internal_boundary_and_owner_capture_for_all_profiles(self):
++        for profile in ('default','sqecea','yqecea'):
++            with self.subTest(profile=profile):
++                home=self.home if profile=='default' else self.home/'profiles'/profile
++                (home/'scripts').mkdir(parents=True,exist_ok=True)
++                (home/'scripts/ledger').touch()
++                self.tasks=[];self.calls=[]
++                self.invoke('Проверь исходный код',profile=profile,platform='subagent')
++                self.assertEqual(self.added(),[])
++                self.invoke('Проверь исходный код',session='owner',profile=profile,platform='cli')
++                self.assertEqual(len(self.added()),1)
++
++    def test_internal_worker_keeps_t3_guidance_without_scanning_other_cards(self):
++        with patch.object(hook, 'pending_t3_cards', return_value=[
++                dict(id='t_unrelated', title='UNRELATED_OWNER_KANBAN', thread='thread:other')]) as scan:
++            context=self.invoke('Проверь исходный код',platform='subagent')
++        scan.assert_not_called()
++        self.assertNotIn('UNRELATED_OWNER_KANBAN',context)
++        self.assertIn('After handing work to T3',context)
++
++    def test_internal_continue_never_guesses_legacy_owner_task(self):
++        self.tasks=[dict(id='legacy1',title='UNRELATED_LEGACY_OWNER',status='open',outputs=['visual png'])]
++        context=self.invoke('Продолжи проверять исходный код',platform='subagent')
++        self.assertNotIn('UNRELATED_LEGACY_OWNER',context)
++        self.assertNotIn('Before delivering a visual',context)
++
++    def test_owner_continue_preserves_legacy_task_contract(self):
++        self.tasks=[dict(id='legacy1',title='LEGACY_OWNER',status='open',outputs=['visual png'])]
++        context=self.invoke('Продолжи проверять исходный код',platform='cli')
++        self.assertIn('LEGACY_OWNER',context)
++        self.assertIn('Before delivering a visual',context)
++
++    def test_internal_explicit_task_keeps_its_contract(self):
++        self.tasks=[dict(id='legacy1',title='EXPLICIT_TASK',status='open',outputs=['visual png'])]
++        context=self.invoke('Продолжи legacy1',platform='subagent')
++        self.assertIn('EXPLICIT_TASK',context)
++        self.assertIn('Before delivering a visual',context)
++
++

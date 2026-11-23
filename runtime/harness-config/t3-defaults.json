@@ -1,0 +1,18 @@
+{
+  "defaultModelSelection": {
+    "instanceId": "acpRegistry_devin",
+    "model": "swe-2-high",
+    "options": [
+      {"id": "thought_level", "value": "high"},
+      {"id": "speed", "value": "standard"}
+    ]
+  },
+  "textGenerationModelSelection": {
+    "instanceId": "codex",
+    "model": "gpt-6.1-terra",
+    "options": [
+      {"id": "reasoningEffort", "value": "high"},
+      {"id": "serviceTier", "value": "default"}
+    ]
+  }
+}

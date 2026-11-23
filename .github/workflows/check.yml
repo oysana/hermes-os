@@ -1,0 +1,44 @@
+name: canonical-check
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: canonical-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: [self-hosted, linux, home-pc]
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link artifact evidence
+        working-directory: ${{ github.workspace }}
+        run: |
+          mkdir -p .artifacts
+          for name in \
+            hermes-bridge-20261011 \
+            resume-gemini-20261016 \
+            engineers-collect-20261014 \
+            acceptance-runner-resume-20261014 \
+            verified-units-install-20261014 \
+            acceptance-capture-path-20261014; do
+            [ -e ".artifacts/$name" ] && continue
+            for src in \
+              "$HOME/.hermes/.artifacts/$name" \
+              "$HOME/coding-projects/hermes-pro/.artifacts/$name"; do
+              if [ -e "$src" ]; then ln -s "$src" ".artifacts/$name"; break; fi
+            done
+            [ -e ".artifacts/$name" ] || { echo "missing artifact source: $name"; exit 1; }
+          done
+      - name: Canonical check suite
+        working-directory: ${{ github.workspace }}
+        env:
+          # source-admission qualifies a provenance-pinned fixture whose
+          # SOURCE-BINDINGS.json records absolute canonical-checkout paths;
+          # run it against that location on this host (same files, same sha256).
+          HERMES_SOURCE_ADMISSION_CHECK_ROOT: /home/yqecea/coding-projects/hermes-pro
+        run: bash scripts/check.sh

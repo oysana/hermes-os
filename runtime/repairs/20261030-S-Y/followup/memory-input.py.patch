@@ -1,0 +1,18 @@
+--- a/memory-input.py
++++ b/memory-input.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Bounded, profile-local Telegram turns for review-only memory proposals."""
++"""Bounded user statements for review-only memory proposals; assistant claims are not facts."""
+ import argparse
+ from datetime import timedelta
+ import json
+@@ -15,7 +15,7 @@
+     start = now.replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=1)
+     end = start + timedelta(days=1)
+     with sqlite3.connect(f'file:{args.home}/state.db?mode=ro', uri=True, timeout=5) as db:
+-        rows = db.execute("SELECT m.id,m.session_id,m.role,m.content,m.timestamp,m.message_uid FROM messages m JOIN sessions s ON s.id=m.session_id WHERE s.source='telegram' AND m.role IN ('user','assistant') AND m.timestamp>=? AND m.timestamp<? AND m.active=1 ORDER BY m.timestamp DESC LIMIT 120", (start.timestamp(),end.timestamp())).fetchall()
++        rows = db.execute("SELECT m.id,m.session_id,m.role,m.content,m.timestamp,m.message_uid FROM messages m JOIN sessions s ON s.id=m.session_id WHERE s.source='telegram' AND m.role='user' AND COALESCE(m.display_kind,'')='' AND COALESCE(m._compressed_summary,0)=0 AND m.content NOT LIKE '%[INTERNAL NOTIFICATION%' AND m.timestamp>=? AND m.timestamp<? AND m.active=1 ORDER BY m.timestamp DESC LIMIT 120", (start.timestamp(),end.timestamp())).fetchall()
+     turns, seen, budget = [], set(), 16000
+     for row in reversed(rows):
+         ident, session, role, content, timestamp, uid = row

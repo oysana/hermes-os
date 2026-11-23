@@ -1,0 +1,28 @@
+---
+title: "T3 return: card waits, sweep receipts, origin must wake"
+---
+stateDiagram-v2
+  state "Legend" as legend {
+    lg0: waiting
+    lg1: stuck
+    lg2: Breaks NoDeadlock or ParkedReceiptGetsWake
+    lg3: Path to the NoDeadlock or ParkedReceiptGetsWake bug
+  }
+  class lg0 blue
+  class lg1 orange
+  class lg2 breaks
+  class lg3 bugPath
+  s0: Run in flight
+  s1: Run finished, sweep not yet seen
+  s2: Receipt parked #8212; nobody is woken
+  [*] --> s0
+  s0 --> s1: the T3 run ends
+  s1 --> s2: sweep writes the return receipt
+  classDef breaks fill:#ffecee,stroke:#e72e3b,stroke-width:2.5px,color:#cd2834
+  class s0 blue
+  class s0 bugPath
+  class s1 blue
+  class s1 bugPath
+  class s2 orange
+  class s2 breaks
+  class s2 bugPath

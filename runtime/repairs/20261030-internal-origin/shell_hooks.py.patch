@@ -1,0 +1,4 @@
+--- /home/yqecea/.hermes/hermes-agent/agent/shell_hooks.py
++++ /home/yqecea/.hermes/hermes-agent/agent/shell_hooks.py
+@@ -89,0 +90 @@
++        "parent_session_id": kwargs.get("parent_session_id") or "",

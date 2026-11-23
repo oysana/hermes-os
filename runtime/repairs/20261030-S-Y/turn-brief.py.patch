@@ -1,0 +1,35 @@
+--- before/turn-brief.py
++++ after/turn-brief.py
+@@ -588,7 +588,7 @@
+             "|---|---|---|---|---|---|---|---|---|---|---|---|\n" + "\n".join(rows))
+ 
+ 
+-def learning_task_facts(profile, open_tasks):
++def learning_task_facts(profile, open_tasks, current_dest=""):
+     path = acceptance_home(HOME / "profiles/sqecea") / "state/tasks.jsonl"
+     tasks = open_tasks if profile == "sqecea" else [json.loads(line) for line in path.read_text().splitlines() if line.strip()] if path.is_file() else []
+     tasks = [task for task in tasks if task.get("status") not in ("done", "dropped")]
+@@ -596,6 +596,10 @@
+     # The deadline-bearing original wins over an undated copy, regardless of list order.
+     scratch.sort(key=lambda task: (not bool(task.get("due")), task.get("due") or "", task.get("created_at") or ""))
+     selected = scratch[:1] + [task for task in tasks if task not in scratch][:6]
++    if profile == "sqecea" and current_dest.count(":") == 2:
++        topic_tasks = [task for task in tasks if task.get("dest") == current_dest]
++        if topic_tasks:
++            selected = (topic_tasks + [task for task in selected if task not in topic_tasks])[:7]
+     return (f"Learning task facts from S ledger ({path}); reuse these IDs, never add a duplicate. "
+             "Inspect the original work before selecting a slot.\n" + "\n".join(
+                 f"- selected task_id={task['id']} title={task.get('title')} due={task.get('due') or 'none_recorded'} next={task.get('next') or 'not recorded'}"
+@@ -1143,8 +1147,10 @@
+         brief.extend(lines)
+     if not scheduled and profile in ("", "default", "hqecea") and re.search(r"oysana|oynote|aipay|voicebridge|проект|студи", text, re.I):
+         brief.append(project_facts(text))
+-    if not scheduled and profile in ("sqecea", "yqecea") and re.search(r"scratch|tumo|с нуля|начать уч|начн[её]м|позаниматься|заниматься|свободн|окно|сегодня|завтра|на неделе|зал|колледж", text, re.I):
+-        brief.append(learning_task_facts(profile, open_tasks))
++    current_dest = origin(raw)
++    topic_work = profile == "sqecea" and active and current_dest.count(":") == 2
++    if not scheduled and (topic_work or (profile in ("sqecea", "yqecea") and re.search(r"scratch|tumo|с нуля|начать уч|начн[её]м|позаниматься|заниматься|свободн|окно|сегодня|завтра|на неделе|зал|колледж", text, re.I))):
++        brief.append(learning_task_facts(profile, open_tasks, current_dest if topic_work else ""))
+     if not scheduled and SEND_ASK.search(text):
+         selector = " --profile default" if profile in ("", "default", "hqecea") else f" --profile {profile}"
+         brief.append(

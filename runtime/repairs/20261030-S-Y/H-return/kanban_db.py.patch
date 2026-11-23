@@ -1,0 +1,11 @@
+--- a/hermes_cli/kanban_db.py
++++ b/hermes_cli/kanban_db.py
+@@ -3577,7 +3577,7 @@
+     """``blocked``/``scheduled`` -> its resumable phase (parent re-gated; ``review``
+     when that is where it left off), closing any leaked run first."""
+     now = int(time.time())
+-    with write_txn(conn):
++    with write_txn(conn, allow_nested=True):
+         resume_status = (
+             _resume_status_from_events(conn, task_id)
+             if _task_status(conn, task_id) == "blocked"

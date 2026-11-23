@@ -1,0 +1,18 @@
+--- a/blender-headless-render.md
++++ b/blender-headless-render.md
+@@ -6,7 +6,7 @@
+ 
+ ## Install (once, no root)
+ 
+-Already installed at `~/.hermes/tools/blender/bx/blender` (4.x, CPU Cycles) — reuse it, do not re-download unless the binary is gone. Portable tarball needs no installation:
++Check `test -x ~/.hermes/tools/blender/bx/blender` and its `-b --version` first; reuse the installed portable binary when present. A historical installation note is not current availability. Do not re-download a working binary. Portable tarball needs no installation:
+ 
+ ```bash
+ mkdir -p ~/.hermes/tools/blender && cd ~/.hermes/tools/blender
+@@ -55,5 +55,5 @@
+ in one line, never imply otherwise. Launch heavy jobs low-priority
+ (`renice -n 10 -p PID` works on own processes without sudo), report that the
+ machine stays usable, and offer the kill-switch («скажи стоп — убью»). After
+-the run, confirm no `blender` process remains (`pgrep -x blender`). Stop a runaway run with `pkill -x blender` — never `pkill -f` with the binary path: the pattern also matches your own shell's command line and SIGTERMs it. The
++the run, confirm this invocation's recorded PID and owned children have exited. Start it with a recorded PID/process group, and stop only that still-matching owned invocation when needed; verify UID, start time and command before signalling it. Another Blender process may be Yusuf's open work, so a process-name search is inventory only, never a global cleanup command. The
+ install is ~1.5 GB: remove it with the task files when he asks to clean up.

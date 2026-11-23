@@ -1,0 +1,16 @@
+.artifacts/
+decisions.tsv
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.omh/
+.agents/
+.audit/
+.architect/
+.claude/
+work/
+*.mp4
+docs/API-KEYS.md
+*.pem
+*.key
+.env

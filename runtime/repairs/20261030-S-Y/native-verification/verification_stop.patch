@@ -1,0 +1,22 @@
+--- a/agent/verification_stop.py
++++ b/agent/verification_stop.py
+@@ -211,7 +211,8 @@
+             "No canonical test/lint/build command was detected. Create a focused "
+             f"temporary verification script under `{temp_dir}` using an OS-safe "
+             "`tempfile` path with a `hermes-verify-` filename prefix, run it "
+-            "against the changed behavior, clean it up when possible, and "
++            "against the changed behavior in a separate direct terminal tool call, "
++            "wait for its execution result before cleanup, and "
+             "summarize it explicitly as ad-hoc verification rather than suite "
+             "green."
+         )
+@@ -223,6 +224,9 @@
+         f"Changed paths:\n{_format_changed_paths(paths)}\n\n"
+         f"{command_instruction} If verification is not possible, explain the "
+         "concrete blocker instead of claiming the work is fully verified."
++        " Continue the original request through verification. Your final answer "
++        "must include its requested results and file references, followed by "
++        "the verification outcome."
+         f"{addendum}]"
+     )
+ 

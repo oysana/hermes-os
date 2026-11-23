@@ -1,0 +1,58 @@
+--- a/shared/proactive/turn-brief.py
++++ b/shared/proactive/turn-brief.py
+@@ -754,30 +754,7 @@
+ # A card parked "waiting on T3" is invisible to every native wake: kanban fires
+ # notify subscriptions on card terminal events, never on T3 thread state. The
+ # binding below makes the parked wait discoverable on the next turn.
+-T3_META_FIELD = re.compile(r"(?m)^(T3-(?:Thread|Run|State)):\s*(\S+)\s*$")
+-T3_THREAD_ID = re.compile(r"\b((?:mcp|thread|node):[0-9A-Za-z%:_-]{8,})\b")
+-T3_RUN_ID = re.compile(r"\b(run:thread:[0-9A-Za-z%:_-]{8,})\b")
+-T3_WAIT_INTENT = re.compile(r"\bwait\w*\b|ожида\w*|жд(?:ёт|ет|ем|ём|ут|ите)\w*", re.I)
+-
+-
+-def extract_t3_binding(body):
+-    """T3 delegation binding on a card body. Structured `T3-*:` lines win (last
+-    occurrence, matching the task-meta convention); the legacy prose form
+-    'wait for the existing T3 run ... <thread-id>' is recognized so cards parked
+-    before this contract stay discoverable."""
+-    fields = {}
+-    for match in T3_META_FIELD.finditer(body):
+-        fields[match.group(1)] = match.group(2)
+-    if fields.get("T3-Thread"):
+-        return {"thread": fields["T3-Thread"], "run": fields.get("T3-Run", ""),
+-                "state": fields.get("T3-State") or "waiting"}
+-    if T3_WAIT_INTENT.search(body):
+-        thread = T3_THREAD_ID.search(body)
+-        if thread:
+-            run = T3_RUN_ID.search(body)
+-            return {"thread": thread.group(1), "run": run.group(1) if run else "",
+-                    "state": "waiting"}
+-    return None
++from t3_wait import extract_t3_binding, resumable_t3_wait
+ 
+ 
+ def pending_t3_cards():
+@@ -796,8 +773,8 @@
+             continue
+         if row.get("assignee", "default") not in ("default", "hqecea"):
+             continue
+-        binding = extract_t3_binding(row.get("body") or "")
+-        if binding and binding["state"] not in ("ingested", "done"):
++        binding = resumable_t3_wait(row)
++        if binding:
+             pending.append({"id": row["id"], "title": (row.get("title") or "")[:70], **binding})
+     return pending[:8]
+ 
+@@ -811,8 +788,10 @@
+     lines.append(
+         "For each, in this turn: `t3_thread_read` the recorded thread/run (task_status for a recorded taskId). "
+         "Terminal → `hermes kanban --board default comment <id> '<terminal summary + artifact paths>'`, `attach` key files, "
+-        "mark `T3-State: ingested` in its body (`edit --body`), then `unblock` so dispatch spawns the acceptance worker, "
+-        "or `complete --result`/`request-review`/`block --reason '<justification>'` when this session owns the verdict — "
++        "then `complete --result`/`request-review`/`block --reason '<justification>'` when this session owns the verdict. "
++        "When another acceptance worker is needed, call `python3 ~/.hermes/shared/proactive/run-selected.py "
++        "~/.hermes/scripts/t3-return-sweep.py --task <id>` while the binding still waits; this helper owns atomic unblock "
++        "and rechecks current owner holds. Mark `T3-State: ingested` only after accepting the matching result — "
+         "the card's own terminal event delivers the wake its subscription promised. "
+         "Still running → leave it parked; the owning worker or a later turn retries — do not redispatch. "
+         "Thread gone or unreadable → `block` the card with the exact read error (explicit escalation).")

@@ -1,0 +1,67 @@
+--- self-audit.py.pre	2026-11-08 19:55:35.199975605 +0500
++++ self-audit.py	2026-11-08 19:55:35.189851500 +0500
+@@ -132,6 +132,54 @@
+     }
+ 
+ 
++def skill_review_audit(now=None, ledger_path=None, log_dir=None):
++    """Curator-tagged skill edits in the ledger over the last 7 days vs. how many
++    'Background review complete ... result=none' runs agent.log* recorded. A gap
++    means the counter does not see real edits."""
++    now = now or datetime.datetime.now(datetime.timezone.utc)
++    if now.tzinfo is None:
++        now = now.astimezone()  # naive input means local time
++    since = now - datetime.timedelta(days=7)
++    since_utc = since.astimezone(datetime.timezone.utc)
++    since_local_naive = since.astimezone().replace(tzinfo=None)
++    edits = 0
++    lp = ledger_path or HOME / "skills" / ".curator_ledger.jsonl"
++    try:
++        for line in lp.read_text(errors="replace").splitlines():
++            try:
++                row = json.loads(line)
++            except ValueError:
++                continue
++            if not isinstance(row, dict) or row.get("actor") != "curator":
++                continue
++            try:
++                ts = datetime.datetime.fromisoformat(str(row.get("ts") or ""))
++            except ValueError:
++                continue
++            if ts.tzinfo is None:
++                ts = ts.replace(tzinfo=datetime.timezone.utc)
++            if ts >= since_utc:
++                edits += 1
++    except OSError:
++        pass
++    none_runs = 0
++    for log in sorted((log_dir or HOME / "logs").glob("agent.log*")):
++        try:
++            lines = log.read_text(errors="replace").splitlines()
++        except OSError:
++            continue
++        for line in lines:
++            if "result=none" not in line or "Background review" not in line:
++                continue
++            try:
++                ts = datetime.datetime.strptime(line[:23], "%Y-%m-%d %H:%M:%S,%f")
++            except ValueError:
++                continue
++            if ts >= since_local_naive:
++                none_runs += 1
++    return {"edits_7d": edits, "result_none_runs": none_runs}
++
++
+ def ledger_audit():
+     ledger = HOME / "scripts" / "ledger"
+     if not ledger.is_file():
+@@ -179,6 +227,9 @@
+     lines.append(f"- файлов навыков у H: {first['count']}, суммарно ≈ {tokens(first['chars'])} токенов если загрузить всё")
+     for path, size in merged["largest"]:
+         lines.append(f"  - самый тяжёлый: {Path(path).parent.name} — {size} знаков ≈ {tokens(size)} токенов")
++    review = skill_review_audit()
++    lines.append(f"- правок навыков фоновым ревью за 7 дней: {review['edits_7d']} (по журналу), "
++                 f"запусков с result=none: {review['result_none_runs']}")
+ 
+     lines.append("")
+     lines.append("## Расписания")

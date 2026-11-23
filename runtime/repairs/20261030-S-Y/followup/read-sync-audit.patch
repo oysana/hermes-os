@@ -1,0 +1,48 @@
+--- a/tg-personal.py
++++ b/tg-personal.py
+@@ -11,0 +12 @@
++from datetime import datetime, timezone
+@@ -229,0 +231,28 @@
++READ_SYNC_AUDIT = Path.home() / '.hermes/logs/topic-read-sync.jsonl'
++
++
++def record_read_sync(trigger, result):
++    """Best-effort operational receipt; no message content and no behaviour depends on this log."""
++    record = {'event': trigger, 'utc': datetime.now(timezone.utc).isoformat(), 'pid': os.getpid()}
++    for key in ('safe', 'applied', 'read_before', 'snapshot_top', 'read_through', 'unread_count'):
++        value = result.get(key)
++        if type(value) in (bool, int):
++            record[key] = value
++    after = result.get('unread_after')
++    if isinstance(after, list) and all(type(value) is int for value in after):
++        record['unread_after'] = after
++    fd = None
++    try:
++        READ_SYNC_AUDIT.parent.mkdir(parents=True, exist_ok=True)
++        fd = os.open(READ_SYNC_AUDIT, os.O_WRONLY | os.O_CREAT | os.O_APPEND | os.O_NOFOLLOW, 0o600)
++        info = os.fstat(fd)
++        if not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or stat.S_IMODE(info.st_mode) != 0o600:
++            return
++        os.write(fd, (json.dumps(record, separators=(',', ':')) + '\n').encode())
++    except OSError:
++        pass
++    finally:
++        if fd is not None:
++            os.close(fd)
++
++
+@@ -243 +272 @@
+-    async def sync():
++    async def sync(trigger):
+@@ -246 +275,3 @@
+-                return await asyncio.wait_for(reconcile(client, peer, apply=True), timeout=8)
++                result = await asyncio.wait_for(reconcile(client, peer, apply=True), timeout=8)
++                record_read_sync(trigger, result)
++                return result
+@@ -254,3 +285,3 @@
+-            await sync()
+-
+-    await sync()
++            await sync("topic_read")
++
++    await sync("startup")

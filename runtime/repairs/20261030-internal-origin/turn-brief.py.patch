@@ -1,0 +1,104 @@
+--- /home/yqecea/.hermes/shared/proactive/turn-brief.py
++++ /home/yqecea/.hermes/shared/proactive/turn-brief.py
+@@ -11,0 +12 @@
++import sqlite3
+@@ -100 +101 @@
+-T3_CONTRACT = """- After handing work to T3, record the receipt durably. Ledger-bound task: `ledger update ID --completion-requirements /abs/requirements.json --note 'T3 thread=<threadId> run=<runId>'` (requirements include completion_contracts=["return_bundle"], exact thread_id and run_id; capture before export; done requires --completion-manifest /abs/completion.json with run-bound file provenance), then `ledger wait ID --kind internal --on 'T3 run <runId>' --until <ISO time>`. Kanban-bound card: `hermes kanban --board default comment ID 'T3 thread=<threadId> run=<runId>'` plus `T3-Thread:`/`T3-Run:`/`T3-State: waiting` lines in its body (`edit --body`, append `--- task-meta ---` when absent) — a card has no wait verb and a comment never wakes the owner. While the run is yours, stay in it: `t3_thread_wait` until terminal — a wait timeout is still-running, never completion; re-issue the wait, keep the card `running` under your claim (`heartbeat` holds it), read the run before continuing. Terminal → `t3_thread_read` the full result, `comment` the summary + artifact paths, `attach` files, set `T3-State: ingested`, then `complete --result`/`request-review`/`block --reason '<justification>'`: only a card terminal event fires the owner's wake subscription. If the run must exit first, `block` the card naming the thread/run — the pending-T3 scan rescues it on the next turn; never leave it `ready` (dispatch would spawn a duplicate dispatch) or exit silently. On resume read that same run and deliver its result; one dispatch per task."""
++T3_CONTRACT = """- After handing work to T3, record the receipt durably. Ledger-bound task: `ledger update ID --completion-requirements /abs/requirements.json --note 'T3 thread=<threadId> run=<runId>'` (requirements include completion_contracts=["return_bundle"], exact thread_id and run_id; capture before export; done requires --completion-manifest /abs/completion.json with run-bound file provenance), then `ledger wait ID --kind internal --on 'T3 run <runId>' --until <ISO time>`. Kanban-bound card: `hermes kanban --board default comment ID 'T3 thread=<threadId> run=<runId>'` plus `T3-Thread:`/`T3-Run:`/`T3-State: waiting` lines in its body (authorized parent uses `edit --body`, append `--- task-meta ---` when absent). A native worker denied CLI edits preserves the exact receipt in its comment/result for that parent; it never bypasses the guard. Use registered Kanban terminal tools under the worker claim; CLI terminal verbs require parent authority. A card has no wait verb and a comment never wakes the owner. While the run is yours, stay in it: `t3_thread_wait` until terminal — a wait timeout is still-running, never completion; re-issue the wait, keep the card `running` under your claim (`heartbeat` holds it), read the run before continuing. Terminal → `t3_thread_read` the full result, `comment` the summary + artifact paths, `attach` files, set `T3-State: ingested`, then `complete --result`/`request-review`/`block --reason '<justification>'`: only a card terminal event fires the owner's wake subscription. If the run must exit first, `block` the card naming the thread/run — the pending-T3 scan rescues it on the next turn; never leave it `ready` (dispatch would spawn a duplicate dispatch) or exit silently. On resume read that same run and deliver its result; one dispatch per task."""
+@@ -313 +314 @@
+-def continued_tasks(tasks, text, raw, session, current_ids):
++def continued_tasks(tasks, text, raw, session, current_ids, allow_implicit=True):
+@@ -321,0 +323,2 @@
++    if not allow_implicit:
++        return []
+@@ -801 +804,54 @@
+-def trusted_commitment_owner(extra):
++# Sources whose prompts are authored by the runtime, never by Yusuf: delegate children,
++# kanban workers, tool integrations and schedulers. A person-facing surface
++# (cli, oneshot, telegram, tui, desktop, acp) is never listed here; 'unknown' is absent
++# evidence, not internal evidence, and stays owner-capable.
++INTERNAL_SESSION_SOURCES = frozenset(
++    {"subagent", "kanban", "tool", "cron", "a2a"})
++
++
++def session_origin_metadata(profile, session_id):
++    """Exact current session's native row, metadata columns only, read-only; {} when unknown."""
++    if not session_id:
++        return {}
++    home = profile_home(profile)
++    if home is None:
++        return {}
++    db_path = home / "state.db"
++    try:
++        conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True, timeout=1)
++        try:
++            available = {row[1] for row in conn.execute("PRAGMA table_info(sessions)")}
++            columns = [c for c in ("source", "created_source", "session_key", "parent_session_id")
++                       if c in available]
++            if not columns:
++                return {}
++            row = conn.execute(f"SELECT {', '.join(columns)} FROM sessions WHERE id = ?",
++                               (str(session_id),)).fetchone()
++        finally:
++            conn.close()
++    except sqlite3.Error:
++        return {}
++    return dict(zip(columns, row)) if row else {}
++
++
++def internal_origin_label(payload, extra, profile):
++    """The internal source label, or '' for an owner-capable turn. Positive native evidence only:
++    the agent platform, the worker environment, or the session row. parent_session_id alone
++    never qualifies — compressed and resumed owner sessions carry it too."""
++    platform = str(extra.get("platform") or "").strip().lower()
++    if platform in INTERNAL_SESSION_SOURCES:
++        return platform
++    env_source = str(os.environ.get("HERMES_SESSION_SOURCE") or "").strip().lower()
++    if env_source in INTERNAL_SESSION_SOURCES:
++        return env_source
++    if os.environ.get("HERMES_KANBAN_TASK"):
++        return "kanban"
++    metadata = session_origin_metadata(profile, payload.get("session_id"))
++    for key in ("source", "created_source"):
++        value = str(metadata.get(key) or "").strip().lower()
++        if value in INTERNAL_SESSION_SOURCES:
++            return value
++    return ""
++
++
++def trusted_commitment_owner(extra, internal=False):
+@@ -803 +859 @@
+-    if extra.get("parent_session_id"):
++    if internal or extra.get("parent_session_id"):
+@@ -840,0 +897 @@
++    internal = internal_origin_label(payload, extra, profile)
+@@ -845 +902 @@
+-    needs_lock = not scheduled and (state_file.exists() or is_request(text)
++    needs_lock = not scheduled and not internal and (state_file.exists() or is_request(text)
+@@ -866 +923 @@
+-        if (captured_reminder or commitment) and not trusted_commitment_owner(extra):
++        if (captured_reminder or commitment) and not trusted_commitment_owner(extra, internal):
+@@ -881,2 +938,2 @@
+-            visual_required(text, profile)
+-            or (tool_brief and profile not in ("", "default", "hqecea")
++            visual_required(text, "hqecea" if internal else profile)
++            or (tool_brief and not internal and profile not in ("", "default", "hqecea")
+@@ -885 +942 @@
+-        if not scheduled and (is_request(text) or tool_brief or commitment or captured_reminder):
++        if not scheduled and not internal and (is_request(text) or tool_brief or commitment or captured_reminder):
+@@ -1095 +1152,2 @@
+-    owned_tasks = continued_tasks(open_tasks, text, raw, payload.get("session_id"), current_ids)
++    owned_tasks = continued_tasks(open_tasks, text, raw, payload.get("session_id"), current_ids,
++                                  allow_implicit=not internal)
+@@ -1097,2 +1155,2 @@
+-    relevant_tasks = [task for task in open_tasks if task['id'] in owned_ids or matters_now(task)
+-                      or (active and not task.get('dest') and not task.get('source'))]
++    relevant_tasks = [task for task in open_tasks if task['id'] in owned_ids or (not internal and
++                      (matters_now(task) or (active and not task.get('dest') and not task.get('source'))))]
+@@ -1123,0 +1182,3 @@
++    if internal:
++        brief.append(f"Internal turn (native source: {internal}): this prompt is delegated work, not a new owner request — "
++                     "it was not captured to the owner ledger; the owning task stays the native delegation or card.")
+@@ -1182 +1243 @@
+-        pending = pending_t3_cards()
++        pending = pending_t3_cards() if not internal else []
