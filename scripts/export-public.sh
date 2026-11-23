@@ -10,7 +10,7 @@
 set -euo pipefail
 
 REPO_ROOT=$(cd "$(dirname "$0")/.." && pwd)
-PUBLIC_REMOTE=git@github.com:oysana/hermes-os.git
+PUBLIC_REMOTE=https://github.com/oysana/hermes-os.git
 EXCLUDES=(PLAN.md CURRENT_WORK.md .devin)
 
 work=$(mktemp -d)
@@ -22,6 +22,12 @@ for f in "${EXCLUDES[@]}"; do rm -rf "$stage/$f"; done
 
 # Regenerate the map without personal cron names.
 python3 "$REPO_ROOT/scripts/setup-map.py" --public > "$stage/SETUP-MAP.md"
+
+# Redact personal identifiers that legitimately live in the private tree
+# (owner chat id in code, fixtures and verbatim owner quotes).
+grep -rl 'OWNER_CHAT_ID' "$stage" | while read -r f; do
+    sed -i 's/OWNER_CHAT_ID/OWNER_CHAT_ID/g' "$f"
+done
 
 # Secrets gate: abort the export on any finding, secrets or not.
 gitleaks dir "$stage" --report-format json --report-path "$work/leaks.json"
@@ -40,12 +46,13 @@ fi
 echo "snapshot clean: $(find "$stage" -type f | wc -l) files"
 [ "${1:-}" = "--push" ] || { echo "dry run, pass --push to publish"; exit 0; }
 
-if [ -d "$work/mirror" ] || git clone -q "$PUBLIC_REMOTE" "$work/mirror" 2>/dev/null; then
+if git clone -q "$PUBLIC_REMOTE" "$work/mirror" 2>/dev/null; then
     cd "$work/mirror"
 else
     mkdir -p "$work/mirror" && cd "$work/mirror"
-    git init -qb master && git remote add origin "$PUBLIC_REMOTE"
+    git init -q && git remote add origin "$PUBLIC_REMOTE"
 fi
+git checkout -qB master
 find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -a "$stage"/. .
 git add -A
